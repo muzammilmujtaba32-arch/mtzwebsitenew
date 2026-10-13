@@ -1,0 +1,10 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "mtz-site",
+      "url": "http://127.0.0.1:8737",
+      "port": 8737
+    }
+  ]
+}
