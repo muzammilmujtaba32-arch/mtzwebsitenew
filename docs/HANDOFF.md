@@ -91,8 +91,7 @@ and there are no script errors. Several rounds of multi-agent review were run an
    - permanent Facebook page address (the share link works for visitors, but search engines prefer the permanent one).
 5. **Go live:**
    - upload the contents of `site/` (Netlify Drop is easiest; `docs/` and `tools/` are not part of the website);
-   - choose a domain;
-   - then make `og:image` absolute and add `og:url` + a canonical link;
+   - domain **mumtaztilezone.com** is set up in the code (canonical, og tags, JSON-LD, `wrangler.jsonc`); hosting is the Cloudflare Worker `mumtaztilezoneandsanitaryware` built from GitHub;
    - set up a Google Business Profile that links to the site.
 6. **Optional polish:**
    - The Oreal matt, office and outdoor photos come from small (720 px) WhatsApp images, so they're slightly soft on

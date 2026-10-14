@@ -65,11 +65,15 @@ customer sends themselves.
    in the "Visit us" section. Also update the two "Get directions" links and `"hasMap"` in the JSON-LD.
 2. **Opening hours:** add them to the "Visit us" contact list.
 3. **Facebook:** put the page's permanent address (e.g. `facebook.com/your-page-name`) in the JSON-LD `"sameAs"`.
-4. **Domain:** once you have one, make `og:image` a full URL and add `og:url` and `<link rel="canonical">`.
+4. **Domain:** the site is set up for **mumtaztilezone.com** (canonical, og:url, og:image and JSON-LD use it). If the domain changes, update those and `wrangler.jsonc`.
 
 ## Putting it online
 
-Any static web host works. Upload the **contents of `site/`** so `index.html` is at the top level.
+**Live hosting: Cloudflare Workers.** `wrangler.jsonc` publishes only `site/` as the Worker `mumtaztilezoneandsanitaryware`
+on mumtaztilezone.com and www.mumtaztilezone.com. Connect the Worker to this GitHub repo (Settings → Build) and every
+push to `main` deploys automatically.
+
+Any other static web host also works. Upload the **contents of `site/`** so `index.html` is at the top level.
 
 - **Netlify Drop** (free): drag the `site` folder onto https://app.netlify.com/drop
 - **GitHub Pages** (free): push the contents of `site/` to the root of a separate repository, or use a GitHub Actions
