@@ -105,7 +105,12 @@ Key mechanisms:
 - **Tile filters:** buttons `.chip[data-filter]` show or hide `.swatch-card[data-tags]`. Keep each card's visible
   `.tags` list in sync with its `data-tags` (Living & office maps to `living`). Every filter should match at least 2 cards.
 - **Calculator** (`#tile-calc`):
-  - Tile sizes are `<option data-w data-h data-ppb>` (cm and tiles per box).
+  - Tile sizes are `<option data-m2 data-ppb data-label>`. They hold m² per tile and tiles per box, copied from the
+    shop's stock list (Nenosofts), sizes in inches. Don't recompute m² from the inch size: the shop's figures are
+    nominal (e.g. 24×24″ = 0.36 m²), and the estimate must match what the shop bills.
+  - Use `data-m2`, never `data-area`, on options: `data-area` marks the openings input for unit conversion.
+  - "Other size…" is entered in inches (1–120) and converted at 0.00064516 m² per square inch.
+  - The *Tiles per box* hint shows the box coverage (`#calc-ppb-hint`).
   - Measurements store an exact metric value in `data-base`, so feet↔metres switches never drift.
   - `measure()` uses that exact value until the user edits the field.
   - Results go to `#r-*`, errors to `#calc-message`, and screen readers get a debounced summary in `#calc-status`.

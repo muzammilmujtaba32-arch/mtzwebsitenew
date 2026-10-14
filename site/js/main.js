@@ -197,6 +197,7 @@
       openings: $('#calc-openings'),
       size: $('#calc-size'),
       ppb: $('#calc-ppb'),
+      ppbHint: $('#calc-ppb-hint'),
       tw: $('#calc-tw'),
       th: $('#calc-th'),
       waste: $('#calc-waste'),
@@ -214,6 +215,9 @@
     // Same physical limits in both units, so a room never becomes "too big" just by switching
     var LIMITS = { ft: { dim: 500, height: 50 }, m: { dim: 500 * M_PER_FT, height: 50 * M_PER_FT } };
     var measured = $all('[data-dim], [data-area]', calc);
+    var IN2_TO_M2 = 0.00064516; // one square inch in m², for "Other size…" (entered in inches)
+    var M2 = NBSP + 'm²';
+    var SQFT = NBSP + 'sq' + NBSP + 'ft';
 
     function num(input) {
       var v = parseFloat(input.value);
@@ -296,9 +300,20 @@
       var W = measure(el.width);
       var H = walls ? measure(el.height) : 0;
       var openings = walls ? (el.openings.value.trim() === '' ? 0 : measure(el.openings)) : 0;
-      var tileW = isCustom ? num(el.tw) : parseFloat(opt.getAttribute('data-w'));
-      var tileH = isCustom ? num(el.th) : parseFloat(opt.getAttribute('data-h'));
+      // Listed sizes carry the shop's own m² per tile (data-m2); custom sizes are worked out from inches
+      var tileW = isCustom ? num(el.tw) : NaN;
+      var tileH = isCustom ? num(el.th) : NaN;
+      var tileM2 = isCustom ? tileW * tileH * IN2_TO_M2 : parseFloat(opt.getAttribute('data-m2'));
       var perBox = num(el.ppb);
+
+      // Show how much one box covers, so it can be compared with the box label
+      var sizeOk = isCustom ? (tileW >= 1 && tileW <= 120 && tileH >= 1 && tileH <= 120) : tileM2 > 0;
+      if (sizeOk && perBox >= 1 && Math.floor(perBox) === perBox) {
+        var boxM2 = perBox * tileM2;
+        el.ppbHint.textContent = 'Box covers ' + fmt(boxM2, 2) + M2 + ' (' + fmt(boxM2 / M2_PER_SQFT, 1) + SQFT + ').';
+      } else {
+        el.ppbHint.textContent = 'Check the box label.';
+      }
       var waste = parseFloat(el.waste.value) / 100;
       var unitWord = unit === 'm' ? 'metres' : 'feet';
 
@@ -308,8 +323,8 @@
       if (L > lim.dim || W > lim.dim || (walls && H > lim.height)) {
         return invalid('Those sizes look too big. Please check them (in ' + unitWord + ').');
       }
-      if (isCustom && !(tileW >= 1 && tileW <= 300 && tileH >= 1 && tileH <= 300)) {
-        return invalid('Enter the tile size in centimetres (1 to 300 cm).');
+      if (isCustom && !(tileW >= 1 && tileW <= 120 && tileH >= 1 && tileH <= 120)) {
+        return invalid('Enter the tile size in inches (1 to 120).');
       }
       if (!(perBox >= 1 && perBox <= 100 && Math.floor(perBox) === perBox)) {
         return invalid('Enter a whole number of tiles per box (check the box label).');
@@ -329,13 +344,10 @@
       }
       el.message.hidden = true;
 
-      var tileM2 = (tileW / 100) * (tileH / 100);
       var tiles = Math.ceil((areaM2 * (1 + waste)) / tileM2 - 1e-9);
       var boxes = Math.ceil(tiles / perBox);
       var coverM2 = boxes * perBox * tileM2;
       var pct = Math.round(waste * 100);
-      var M2 = NBSP + 'm²';
-      var SQFT = NBSP + 'sq' + NBSP + 'ft';
 
       // The unit sits in its own span so a long number never splits "sq / ft" across lines
       var unitSpan = function (u) { return ' <span class="stat__unit">' + u + '</span>'; };
@@ -355,7 +367,7 @@
         ? 'Walls: ' + fmtDim(L) + ' × ' + fmtDim(W) + ' ' + unit + ' room, ' + fmtDim(H) + ' ' + unit + ' high' +
           (openings > 0 ? ' (minus ' + fmtDim(openings) + (unit === 'm' ? ' m²' : ' sq ft') + ' doors/windows)' : '')
         : 'Floor: ' + fmtDim(L) + ' × ' + fmtDim(W) + ' ' + unit;
-      var sizeLabel = isCustom ? fmtDim(tileW) + ' × ' + fmtDim(tileH) + ' cm' : opt.textContent.trim();
+      var sizeLabel = isCustom ? fmtDim(tileW) + ' × ' + fmtDim(tileH) + '″' : opt.getAttribute('data-label');
 
       el.send.href = waLink([
         'Assalam o Alaikum! I used the tile calculator on your website.',

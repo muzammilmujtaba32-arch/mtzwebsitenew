@@ -70,21 +70,14 @@ and there are no script errors. Several rounds of multi-agent review were run an
    (Glory, Oriel, Ornate *grout* only; not `ornate-tile-bond-20kg.jpg`). Show a preview and get approval before
    saving in Canva.
 2. **Real commode / basin / vanity photos** to replace the 4 illustrations (steps are in `README.md`).
-3. **Confirm the calculator's "tiles per box" defaults** with real boxes in stock. They are typical values:
-   - 60×60 → 4
-   - 60×120 → 2
-   - 80×80 → 3
-   - 40×40 → 6
-   - 40×80 → 4
-   - 30×60 → 8
-   - 30×30 → 11
-   - 25×40 → 10
-   - 20×30 → 17
-   - 20×120 → 6
-   - "Other size…" → 4
+3. **Calculator sizes now come from the shop's stock list** (Nenosofts, 14 Oct 2026): 23 sizes in inches, each with
+   the system's own m² per tile and tiles per carton. The test entry "16004" was left out.
+   - In `site/index.html` each is an `<option data-m2="…" data-ppb="…" data-label="…">` in `#calc-size`.
+   - The "Box covers" hint under *Tiles per box* equals the stock list's *Ctn Meter*.
+   - **When the stock list changes** (new size, new carton qty), update the same option. If the 24×24″ default changes,
+     also update `value="4"` on `<input id="calc-ppb">` and the test table below.
+   - "Other size…" takes the tile size in inches and defaults to 4 per box.
 
-   These are the `data-ppb` values on the `<option>`s in `site/index.html`. If you change the 60×60 value, also change
-   `value="4"` on `<input id="calc-ppb">` (the default shown on page load) and the test table below.
 4. **Missing info from the owner:**
    - opening hours;
    - exact Google Maps pin;
@@ -123,11 +116,14 @@ listed below.
 
 - Paste `tools/layout-audit.js` into the browser console at widths 320, 375, 768, 1024, 1181, 1366 and 1920.
   Every list should be empty, `overflowX` false, and the logo clear space at or above what's needed.
-- Calculator spot-checks (defaults: 60×60, 4 per box, 10% extra):
+- Calculator spot-checks (default size 24×24″, 4 per box, 10% extra), verified against hand calculations:
 
   | Input | Expected |
   |---|---|
-  | Floor 12 × 10 ft | 120.0 sq ft, 35 tiles, 9 boxes |
+  | Floor 12 × 10 ft | 120.0 sq ft, 35 tiles, 9 boxes (covers 12.96 m²) |
   | Same in metres | 11.15 m², still 35 / 9; switching back gives 12 × 10 exactly |
-  | Walls 8 × 6 ft room, 8 ft high, minus 21 sq ft, 30×60 at 8/box | 203.0 sq ft, 116 tiles, 15 boxes |
-  | Floor 15.5 × 13.25 ft, 80×80 at 3/box, 5% | 205.4 sq ft, 32 tiles, 11 boxes |
+  | Walls 8 × 6 ft room, 8 ft high, minus 21 sq ft, 12×24″ · 8/box | 203.0 sq ft, 116 tiles, 15 boxes |
+  | Floor 15.5 × 13.25 ft, 16×32″ · 7/box, 5% | 205.4 sq ft, 63 tiles, 9 boxes (box covers 2.24 m²) |
+  | Floor 10 × 12 ft, 9×17″ · 15/box | 129 tiles, 9 boxes (box covers 1.43 m²) |
+  | Floor 12 × 10 ft, 24×24″ Forte · 4/box | 32 tiles, 8 boxes (box covers 1.58 m²) |
+  | Floor 20 × 15 ft, 17×17″ · 9/box, 15% | 181 tiles, 21 boxes (box covers 1.60 m²) |

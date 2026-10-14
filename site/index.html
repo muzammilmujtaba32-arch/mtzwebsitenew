@@ -704,17 +704,31 @@
 
             <div class="field">
               <label for="calc-size">Tile size</label>
+              <!-- Sizes, m² per tile and tiles per box come from the shop's stock list (Nenosofts). Keep them in sync with it. -->
               <select class="select" id="calc-size">
-                <option value="60x60" data-w="60" data-h="60" data-ppb="4" selected>60 × 60 cm (24×24″)</option>
-                <option value="60x120" data-w="60" data-h="120" data-ppb="2">60 × 120 cm (24×48″)</option>
-                <option value="80x80" data-w="80" data-h="80" data-ppb="3">80 × 80 cm (32×32″)</option>
-                <option value="40x40" data-w="40" data-h="40" data-ppb="6">40 × 40 cm (16×16″)</option>
-                <option value="40x80" data-w="40" data-h="80" data-ppb="4">40 × 80 cm (16×32″)</option>
-                <option value="30x60" data-w="30" data-h="60" data-ppb="8">30 × 60 cm (12×24″)</option>
-                <option value="30x30" data-w="30" data-h="30" data-ppb="11">30 × 30 cm (12×12″)</option>
-                <option value="25x40" data-w="25" data-h="40" data-ppb="10">25 × 40 cm (10×16″)</option>
-                <option value="20x30" data-w="20" data-h="30" data-ppb="17">20 × 30 cm (8×12″)</option>
-                <option value="20x120" data-w="20" data-h="120" data-ppb="6">20 × 120 cm (8×48″)</option>
+                <option value="24x48" data-m2="0.72" data-ppb="2" data-label="24×48″">24×48″ · 2/box</option>
+                <option value="24x24" data-m2="0.36" data-ppb="4" data-label="24×24″" selected>24×24″ · 4/box</option>
+                <option value="24x24-forte" data-m2="0.395" data-ppb="4" data-label="24×24″ Forte">24×24″ Forte · 4/box</option>
+                <option value="21x21" data-m2="0.276" data-ppb="5" data-label="21×21″">21×21″ · 5/box</option>
+                <option value="20x20" data-m2="0.25" data-ppb="6" data-label="20×20″">20×20″ · 6/box</option>
+                <option value="17x17" data-m2="0.177778" data-ppb="9" data-label="17×17″">17×17″ · 9/box</option>
+                <option value="16x32" data-m2="0.32" data-ppb="7" data-label="16×32″">16×32″ · 7/box</option>
+                <option value="16x16" data-m2="0.16" data-ppb="10" data-label="16×16″">16×16″ · 10/box</option>
+                <option value="16x16-11" data-m2="0.16" data-ppb="11" data-label="16×16″">16×16″ · 11/box</option>
+                <option value="12x32" data-m2="0.24" data-ppb="7" data-label="12×32″">12×32″ · 7/box</option>
+                <option value="12x24" data-m2="0.18" data-ppb="8" data-label="12×24″">12×24″ · 8/box</option>
+                <option value="12x24-9" data-m2="0.18" data-ppb="9" data-label="12×24″">12×24″ · 9/box</option>
+                <option value="12x24-forte" data-m2="0.185" data-ppb="8" data-label="12×24″ Forte">12×24″ Forte · 8/box</option>
+                <option value="12x18" data-m2="0.135" data-ppb="12" data-label="12×18″">12×18″ · 12/box</option>
+                <option value="10x22" data-m2="0.135" data-ppb="11" data-label="10×22″">10×22″ · 11/box</option>
+                <option value="10x20" data-m2="0.125" data-ppb="12" data-label="10×20″">10×20″ · 12/box</option>
+                <option value="10x16" data-m2="0.1" data-ppb="15" data-label="10×16″">10×16″ · 15/box</option>
+                <option value="9x24" data-m2="0.135" data-ppb="12" data-label="9×24″">9×24″ · 12/box</option>
+                <option value="9x17" data-m2="0.0956" data-ppb="15" data-label="9×17″">9×17″ · 15/box</option>
+                <option value="8x48" data-m2="0.24" data-ppb="5" data-label="8×48″">8×48″ · 5/box</option>
+                <option value="8x48-6" data-m2="0.24" data-ppb="6" data-label="8×48″">8×48″ · 6/box</option>
+                <option value="8x20" data-m2="0.125" data-ppb="15" data-label="8×20″">8×20″ · 15/box</option>
+                <option value="6x32" data-m2="0.12" data-ppb="10" data-label="6×32″">6×32″ · 10/box</option>
                 <option value="custom" data-ppb="4">Other size…</option>
               </select>
             </div>
@@ -723,15 +737,15 @@
               <div class="field">
                 <label for="calc-tw">Tile width</label>
                 <div class="input-unit">
-                  <input class="input" id="calc-tw" type="number" inputmode="decimal" min="1" max="300" step="any" value="60" aria-describedby="calc-tw-unit">
-                  <span class="input-unit__suffix" id="calc-tw-unit">cm</span>
+                  <input class="input" id="calc-tw" type="number" inputmode="decimal" min="1" max="120" step="any" value="24" aria-describedby="calc-tw-unit">
+                  <span class="input-unit__suffix" id="calc-tw-unit">inches</span>
                 </div>
               </div>
               <div class="field">
                 <label for="calc-th">Tile length</label>
                 <div class="input-unit">
-                  <input class="input" id="calc-th" type="number" inputmode="decimal" min="1" max="300" step="any" value="60" aria-describedby="calc-th-unit">
-                  <span class="input-unit__suffix" id="calc-th-unit">cm</span>
+                  <input class="input" id="calc-th" type="number" inputmode="decimal" min="1" max="120" step="any" value="24" aria-describedby="calc-th-unit">
+                  <span class="input-unit__suffix" id="calc-th-unit">inches</span>
                 </div>
               </div>
             </div>
@@ -740,7 +754,7 @@
               <div class="field">
                 <label for="calc-ppb">Tiles per box</label>
                 <input class="input" id="calc-ppb" type="number" inputmode="numeric" min="1" max="100" step="1" value="4" aria-describedby="calc-ppb-hint">
-                <span class="field__hint" id="calc-ppb-hint">Typical for this size. Check the box&nbsp;label.</span>
+                <span class="field__hint" id="calc-ppb-hint">Box covers 1.44&nbsp;m² (15.5&nbsp;sq&nbsp;ft).</span>
               </div>
               <div class="field">
                 <label for="calc-waste">Extra for cuts &amp; breakage</label>
