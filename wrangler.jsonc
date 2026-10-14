@@ -1,6 +1,6 @@
 // Cloudflare Workers config: serves the static website in site/ (docs/ and tools/ are not published).
 {
-  "name": "mumtaztilezoneandsanitaryware",
+  "name": "mumtaztilezone",
   "compatibility_date": "2026-10-01",
   "assets": {
     "directory": "./site",

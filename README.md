@@ -69,7 +69,7 @@ customer sends themselves.
 
 ## Putting it online
 
-**Live hosting: Cloudflare Workers.** `wrangler.jsonc` publishes only `site/` as the Worker `mumtaztilezoneandsanitaryware`
+**Live hosting: Cloudflare Workers.** `wrangler.jsonc` publishes only `site/` as the Worker `mumtaztilezone`
 on mumtaztilezone.com and www.mumtaztilezone.com. Connect the Worker to this GitHub repo (Settings → Build) and every
 push to `main` deploys automatically.
 
