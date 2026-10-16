@@ -31,14 +31,14 @@
        without JavaScript it loads straight away. -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&amp;display=swap">
   <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Naskh+Arabic:wght@400;600&amp;display=swap"></noscript>
-  <link rel="stylesheet" href="css/style.css?v=3">
+  <link rel="stylesheet" href="css/style.css?v=4">
 
   <script>
     // Enables scroll-reveal styling; falls back to fully visible content if main.js never finishes.
     document.documentElement.classList.add('js');
     setTimeout(function () { if (!window.MTZ_READY) document.documentElement.classList.remove('js'); }, 3000);
   </script>
-  <script src="js/main.js?v=3" defer></script>
+  <script src="js/main.js?v=4" defer></script>
 
   <script type="application/ld+json">
   {
@@ -251,18 +251,23 @@
           </div>
         </div>
       </div>
-      <p class="hero__caption">Shown: K-Gold series border tiles, 120&nbsp;×&nbsp;600&nbsp;mm · Catalogue image</p>
+      <!-- Facts bar on the first screen. The numbers count up once (main.js 'count up'); the HTML holds the final values. -->
+      <div class="hero__facts rise rise-d3">
+        <div class="container">
+          <ul class="trust" aria-label="About Mumtaz Tile Zone at a glance">
+            <li><span class="trust__value">Since <span data-count-to="2000" data-count-from="1900" data-count-plain>2000</span></span><span class="trust__label">Established 2 January 2000</span></li>
+            <li><span class="trust__value"><span data-count-to="25">25</span>+ years</span><span class="trust__label">of experience in Khairpur Mirs</span></li>
+            <li><span class="trust__value"><span data-count-to="1000000">1,000,000</span>+</span><span class="trust__label">customers served since 2000</span></li>
+            <li><span class="trust__value">Imported</span><span class="trust__label">selected products from China</span></li>
+            <li><span class="trust__value">Retail &amp; wholesale</span><span class="trust__label">for homes and projects</span></li>
+          </ul>
+        </div>
+      </div>
     </section>
 
-    <!-- Proof band: facts, address and socials (a div, not a section, so the active-nav observer ignores it) -->
+    <!-- Proof band: address, directions and socials (a div, not a section, so the active-nav observer ignores it) -->
     <div class="proof">
       <div class="container">
-        <ul class="trust" aria-label="About Mumtaz Tile Zone at a glance">
-          <li><span class="trust__value">Since 2000</span><span class="trust__label">Established 2 January 2000</span></li>
-          <li><span class="trust__value">25+ years</span><span class="trust__label">of experience in Khairpur Mirs</span></li>
-          <li><span class="trust__value">Imported</span><span class="trust__label">selected products from China</span></li>
-          <li><span class="trust__value">Retail &amp; wholesale</span><span class="trust__label">for homes and projects</span></li>
-        </ul>
         <div class="proof__visit">
           <p><svg class="icon" aria-hidden="true"><use href="#i-pin"/></svg>Station Road, Opp. Soneri Bank, Near Khaki Shah Pull, Khairpur Mirs</p>
           <a class="link-arrow link-arrow--light" href="https://www.google.com/maps/search/?api=1&amp;query=Khaki+Shah+Pull%2C+Station+Road%2C+Khairpur+Mirs" target="_blank" rel="noopener">

@@ -25,7 +25,8 @@ quiet, square-edged, navy and fast. Green appears only on WhatsApp buttons.
 
 - **Hero:** a full-screen room scene from the Time Ceramics K-Gold catalogue (a kitchen-dining room with a
   black-and-gold marble floor inset framed by gold border tiles, and blue-and-gold marble columns). Phones get a tall
-  crop, larger screens a wide one. The caption reads "Shown: K-Gold series border tiles, 120 × 600 mm · Catalogue image".
+  crop, larger screens a wide one. No caption (removed at the owner's request on 16 Oct). The hero ends with a facts
+  bar: Since 2000, 25+ years, 1,000,000+ customers served, Imported, Retail & wholesale; the numbers count up.
 - **Tile styles now come first:** 18 cards, all designs the shop has in stock (16 Oct), in three looks:
   **Luxury** (7), **Classic** (5) and **Simple** (6). Look filters sit next to the room filters. Phones get a swipe
   rail; tablets and desktops get a 3-column grid with 3 wide room scenes. Each card shows the size, the rooms, a
@@ -35,7 +36,7 @@ quiet, square-edged, navy and fast. Green appears only on WhatsApp buttons.
   basins Pearl V-24 and Delta V-13 (all Master), and wall-hung commodes 005 and 07 (Dell). No Indian (squat) toilets.
   Each card names the brand and model and has an "Ask for price" WhatsApp link that names them too. The printed model names, drawings and spec tables
   are cut away; two names next to the product were painted out.
-- **New:** a proof band under the hero (since 2000, address, directions, socials), replacing the info strip; a
+- **New:** a proof band under the hero (address, directions, socials), replacing the info strip; a
   WhatsApp / Call / Directions bar at the bottom of phones and tablets, in place of the round button; "Plan your
   visit" in the outlet section; a note under the tile grid saying the room scenes are catalogue images.
 - **Moved:** the outlet video and photos now come right after Sanitary ware, on a Midnight background.
@@ -60,8 +61,8 @@ The HTML comment in `site/index.html` is shown in brackets.
 | Section | Content |
 |---|---|
 | Top bar + header (`Top bar`, `Header`) | Midnight masthead: address, phones, socials (top bar on desktop only); white logo; 7-link menu (hamburger at ≤1180 px) |
-| Hero (`Hero`) | "Excellence in Every Tile", since 2000, WhatsApp + Visit buttons, both numbers, the K-Gold catalogue scene |
-| Proof band (`Proof band`) | since 2000, 25+ years, imported, retail & wholesale; address + directions; socials |
+| Hero (`Hero`) | "Excellence in Every Tile", since 2000, WhatsApp + Visit buttons, both numbers, the K-Gold catalogue scene; facts bar at the bottom (Since 2000, 25+ years, 1,000,000+ customers, Imported, Retail & wholesale; numbers count up) |
+| Proof band (`Proof band`) | address + directions; socials |
 | Tile styles (`Tile styles`) | 18 in-stock designs in Luxury / Classic / Simple; filters for the 3 looks and floor, wall, bathroom, kitchen, living & office, outdoor; "Send us a photo" |
 | What we offer (`Products`) | Tiles (catalogue room scene) / Sanitary ware / Bathroom fittings cards |
 | Sanitary ware & fittings (`Sanitary ware & fittings`) | 2 real showroom photos; 8 product photos from the makers (Master one-piece commodes, basins and vanity basins; Dell wall-hung commodes); 2 faucet sets |
@@ -82,7 +83,8 @@ Run the checks in **How to test** before the redesign goes live.
   use the logo files. The magenta style in `~/mtz assets/00 BRAND/Brand-Style-Guide.md` is for social carousels only.
 - **Honesty:** product facts come only from the company profile (`docs/company-profile.txt`) and what is printed on
   the packs or catalogue pages. No invented stats, prices, reviews or services.
-- **Catalogue images stay labelled:** "· Catalogue image" in the hero caption and the note under the tile grid.
+- **Catalogue images stay labelled:** the note under the tile grid says the room scenes are catalogue images (the
+  hero caption was removed at the owner's request on 16 Oct).
   Never say "our showroom" about a catalogue image.
 - **Do not promote Ornate Tile Bond** (owner's instruction). Ornate Tile Grout is fine.
 - **AI images** stay labelled "Illustration" if they are ever used again (none are on the page now).
@@ -115,6 +117,10 @@ Run the checks in **How to test** before the redesign goes live.
 4. **Speed first:** small files, lazy loading, no picture ever enlarged.
 5. **Brand names on sanitary ware:** the owner said to name Master and Dell, so each card reads e.g.
    "Master · model OP-4", and the alt text and WhatsApp message name the brand too.
+6. **Hero caption removed:** the owner asked to remove "Shown: K-Gold series border tiles … Catalogue image".
+7. **Facts on the first screen:** the facts moved from the proof band into a bar at the bottom of the hero, and a
+   fifth fact was added: **1,000,000+ customers served since 2000** (the owner's figure). The numbers count up
+   ("the numbers should be in motions"): 1900 → 2000, 0 → 25 and 0 → 1,000,000.
 
 ## Questions for the owner
 
@@ -132,7 +138,7 @@ Run the checks in **How to test** before the redesign goes live.
    welcome.
 4. **Mobile action bar:** do you like the WhatsApp / Call / Directions bar at the bottom of phones and tablets,
    instead of the round button? It can be removed quickly (see `AGENTS.md`, "Floating button and action bar").
-5. **120 × 600 mm in inches:** the K-Gold border tiles (hero caption and the "Black & gold borders" card) show only
+5. **120 × 600 mm in inches:** the K-Gold border tiles (the "Black & gold borders" card) show only
    "120 × 600 mm". Every other card also gives the size in inches, the way the shop names it (e.g. 24 × 24″). What
    does the shop call this size in inches?
 6. **Still missing:**
@@ -252,6 +258,8 @@ can compare before overwriting.
   are on screen, while the menu is open and while typing in the form. The round button shows only on desktop.
 - **Video:** "Play video" swaps in the video and plays it. Without JavaScript the link opens the mp4.
 - **Map:** no request to Google until "Show map here" is tapped; then the map appears. "Open in Google Maps" always works.
+- **Facts bar:** on a laptop or desktop it is on the first screen (also at 1366 × 768); the numbers count up once
+  (1900 → 2000, 0 → 25, 0 → 1,000,000) and end on the exact values. With reduced motion they simply show.
 - **Urdu policy:** shows in Noto Naskh once you scroll near it, and in print preview.
 - **Without JavaScript:** all content is visible and the hero, cards and links work.
 - **Print preview:** the logo shows on the navy header, text is black, photo layers are hidden.

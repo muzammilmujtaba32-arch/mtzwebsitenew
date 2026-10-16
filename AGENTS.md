@@ -41,6 +41,7 @@ tools/layout-audit.js      console snippet: overflow / clipping / broken images 
 | Brand (logo, colours, font, logo rules) | `~/Downloads/MTZ LOGO/FINAL-BRAND-KIT/mumtaz-brand-guide.png` and `logo/` |
 | Product specs (sizes, uses, pack weights) | only what is printed on the pack or catalogue image |
 | Store policy (English + Urdu) | the brand-kit invoice preview |
+| "1,000,000+ customers served since 2000" | the owner (16 Oct 2026; see `docs/HANDOFF.md`) |
 | Status and owner decisions | `docs/HANDOFF.md` |
 
 Do not add stats, prices, reviews, testimonials, brands, delivery or installation services, or any other claim these
@@ -94,8 +95,8 @@ Sections in `site/index.html`, in order (each marked by an HTML comment):
 |---|---|
 | top bar | Midnight; desktop only (hidden at ≤960) |
 | header + nav | Midnight, with the reversed white logo; collapses to a hamburger at ≤1180 px |
-| hero | full-bleed catalogue room scene (K-Gold); the only eager photo; caption ends "· Catalogue image" |
-| proof band (`.proof`) | trust facts, address + directions, socials; replaces the old info strip |
+| hero | full-bleed catalogue room scene (K-Gold); the only eager photo; no caption (owner, 16 Oct); its last row is the facts bar `.hero__facts` (Since 2000, 25+ years, 1,000,000+ customers, Imported, Retail & wholesale) |
+| proof band (`.proof`) | address + directions, socials (the facts moved into the hero on 16 Oct) |
 | `#collections` | 18 in-stock tile designs in three looks + filters; a swipe rail at ≤699 |
 | `#products` | Tiles lead card + Sanitary ware and Bathroom fittings side cards |
 | `#sanitary` | 2 real showroom photos, 8 maker product photos (commodes, wall-hung commodes, basins, vanities), 2 faucet sets |
@@ -166,6 +167,12 @@ Key mechanisms:
 - **Video facade (`#outlet`):** `.video-facade` is a link to the mp4 with a poster image. Nothing else downloads
   until a tap; then the 'video' feature swaps in a `<video>`. Without JS the link opens the mp4. The label
   "33 s · 5.6 MB" must match the file (5,589,276 bytes); update it if the video changes.
+- **Facts bar and count-up (hero):** `.hero__facts` is the hero's last row, so it is on the first screen; at ≥961
+  the copy is centred in the space above it. The heading is capped at `8.5svh` and one height query
+  (`min-width: 961px and max-height: 820px`) hides the lead's second sentence, so the bar still fits at 1366 × 768.
+  Numbers in `[data-count-to]` (optional `data-count-from`, and `data-count-plain` for the year) count up once
+  when half in view ('count up' in `main.js`, 1.8 s ease-out). The HTML holds the final values, which show as they
+  are without JS or with reduced motion; screen readers get a visually-hidden copy of the final number.
 - **Map facade (`#visit`):** `.map__facade` shows the place and "Open in Google Maps". The 'map' feature reveals
   "Show map here" (`#map-load`) and its note, which insert the iframe from `<template id="map-template">`. There is
   no Google request, script or cookie until that tap.
@@ -202,8 +209,8 @@ Key mechanisms:
     `loading="lazy" decoding="async"`.
   - Once `site/_headers` is live, images and the video are cached for 30 days. Give a changed image a new file name
     (and update the `<picture>`), or returning visitors may keep seeing the old one.
-  - Catalogue room scenes are supplier images: the hero caption ends "· Catalogue image" and a note under the tile
-    grid says so. Never write "our showroom" about a catalogue image.
+  - Catalogue room scenes are supplier images: a note under the tile grid says so (the hero caption was removed at
+    the owner's request on 16 Oct 2026). Never write "our showroom" about a catalogue image.
   - Widths per slot (use only files that exist; list the folder first: a crop narrower than 720 px has no 720 file):
 
     | Slot | AVIF widths | JPEG fallback (px) |
@@ -243,7 +250,8 @@ Key mechanisms:
 - CSS: use the tokens on `:root`. Single-column grids must be `minmax(0, 1fr)` (plain `1fr` caused mobile
   overflow); so must the action bar's columns.
 - Breakpoints in use: 1180/1181 (nav), 1080, 960/961, 700–960, 640/641, 480, 400. 699 (rails, phone hero crop)
-  and 1181 (desktop nav) are the edges of existing ranges, not new breakpoints. Don't add others.
+  and 1181 (desktop nav) are the edges of existing ranges, not new breakpoints. Don't add others. The one height
+  query (`max-height: 820px`, hero only) is described under *Facts bar and count-up*.
 - Keep the JS breakpoint `matchMedia('(max-width: 1180px)')` in sync with the CSS one.
 - `index.html` loads `css/style.css?v=N` and `js/main.js?v=N`; bump N when you change either file.
 

@@ -583,7 +583,6 @@
     io.observe(policy);
   });
 
-  /* ---------- Reveal on scroll ---------- */
   /* ---------- Footer marquee ---------- */
   safely('marquee', function () {
     var marquee = $('.footer-marquee');
@@ -592,6 +591,45 @@
     marquee.addEventListener('focusout', function () { marquee.scrollLeft = 0; });
   });
 
+  /* ---------- Hero facts: the numbers count up once, when they come into view ---------- */
+  /* The HTML holds the final values, so without JS (or with reduced motion) they simply show. */
+  safely('count up', function () {
+    var counters = $all('[data-count-to]');
+    var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (!counters.length || reduceMotion || !('IntersectionObserver' in window) || !window.requestAnimationFrame) return;
+    var DURATION = 1800;
+    var show = function (el, n) {
+      // A year stays "2000", not "2,000"
+      el.textContent = el.hasAttribute('data-count-plain') ? String(n) : fmt(n, 0);
+    };
+    var finish = function (el) { show(el, +el.getAttribute('data-count-to')); };
+    // Each fact has its own grid column and the final number is the widest, so nothing around it moves or wraps
+    counters.forEach(function (el) {
+      // Screen readers get the final number once; the moving digits are hidden from them
+      el.insertAdjacentHTML('afterend', '<span class="visually-hidden">' + el.textContent + '</span>');
+      el.setAttribute('aria-hidden', 'true');
+      show(el, +(el.getAttribute('data-count-from') || 0));
+    });
+    window.addEventListener('beforeprint', function () { counters.forEach(finish); });
+    var run = function (el) {
+      var from = +(el.getAttribute('data-count-from') || 0), to = +el.getAttribute('data-count-to'), start = null;
+      var step = function (now) {
+        if (start === null) start = now;
+        var p = Math.min(1, (now - start) / DURATION);
+        show(el, Math.round(from + (to - from) * (1 - Math.pow(1 - p, 3))));   // ease-out: fast, then settles
+        if (p < 1) window.requestAnimationFrame(step);
+      };
+      window.requestAnimationFrame(step);
+    };
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) { io.unobserve(entry.target); run(entry.target); }
+      });
+    }, { threshold: 0.5 });
+    counters.forEach(function (el) { io.observe(el); });
+  });
+
+  /* ---------- Reveal on scroll ---------- */
   var revealOk = safely('reveal', function () {
     var reveals = $all('.reveal');
     var showAll = function () { reveals.forEach(function (r) { r.classList.add('is-visible'); }); };
