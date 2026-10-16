@@ -12,8 +12,8 @@
    Or simply double-click `site/index.html`.
    In the Claude desktop app, `.claude/launch.json` only *attaches* to this running server. Its own preview server
    can't read `~/Downloads` (macOS privacy), so start `serve.sh` first.
-2. The site is in git, but **the redesign of 15–16 Oct 2026 is not committed yet**: `git status` lists the changed and
-   new files. Commit, push or deploy only with the owner's go-ahead (a push to `main` deploys the live site).
+2. **The redesign is live** at https://mumtaztilezone.com (and www), pushed on 16 Oct 2026 with the owner's go-ahead
+   (commit 4acf409). A push to `main` deploys the live site, so commit and push only with the owner's go-ahead.
 3. Read **Questions for the owner** and **Next steps** below. AI assistants should also read `AGENTS.md`.
 
 ## What's done
@@ -156,13 +156,11 @@ Run the checks in **How to test** before the redesign goes live.
 ## Next steps (owner to choose)
 
 1. **Check the new tile cards and sanitary photos** (16 Oct), then answer the questions above.
-2. **Go live:**
-   - run the checks in **How to test**;
-   - with the owner's go-ahead, commit and push. Hosting is the Cloudflare Worker `mumtaztilezone`, built from
-     GitHub; domain **mumtaztilezone.com** is set up in the code (canonical, og tags, JSON-LD, `wrangler.jsonc`).
-     Any static host also works: upload the contents of `site/` (`docs/` and `tools/` are not part of the website);
-   - after the deploy, check the cache headers with `curl -I` and run Lighthouse on mobile (targets: Performance
-     ≥ 90, LCP ≤ 2.5 s, CLS ≤ 0.05);
+2. **Live since 16 Oct 2026** (checked: the live page matches `site/index.html`, every image returns 200, the cache
+   rules in `site/_headers` are active). Hosting is the Cloudflare Worker `mumtaztilezone`, built from GitHub; the
+   domain is set up in the code (canonical, og tags, JSON-LD, `wrangler.jsonc`). Any static host also works: upload
+   the contents of `site/` (`docs/` and `tools/` are not part of the website). Still to do:
+   - run Lighthouse on mobile (targets: Performance ≥ 90, LCP ≤ 2.5 s, CLS ≤ 0.05);
    - set up a Google Business Profile that links to the site.
 3. **Canva banner for Tile bond & grout** (2400 × 888 px), using the new mockups in `~/Downloads/bond moke up/`
    (Glory, Oriel, Ornate *grout* only; not `ornate-tile-bond-20kg.jpg`). Show a preview and get approval before
