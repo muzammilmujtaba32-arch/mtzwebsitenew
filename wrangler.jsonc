@@ -2,11 +2,11 @@
 {
   "name": "mumtaztilezone",
   "compatibility_date": "2026-10-01",
-  // Keep the free address live: https://mumtaztilezone.muzammilmujtaba32.workers.dev
+  // Keep the free address live: https://mumtaztilezone.mumtaztilezone.workers.dev
   "workers_dev": true,
   "assets": {
     "directory": "./site",
-    "not_found_handling": "single-page-application"
+    "not_found_handling": "404-page"
   },
   // mumtaztilezone.com must be a zone in the same Cloudflare account for these custom domains to attach.
   "routes": [

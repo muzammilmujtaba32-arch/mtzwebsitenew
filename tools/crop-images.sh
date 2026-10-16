@@ -52,10 +52,17 @@ crop "$SRC/PHOTO-2026-03-05-10-54-58.jpg"     "$S/fittings-grey.jpg"          29
 echo "  (ai-*.jpg are Canva AI illustrations: not rebuilt here, see docs/HANDOFF.md)"
 
 echo "Outlet gallery -> $OUT/showroom"
+# The aisle still has two men standing behind the far counter; the owner asked for them to be removed.
+# imagetool rowfill paints them out from the background either side (rectangles are x,y,w,h in the 1080x606 still;
+# the frame bar is filled separately with :raw so it stays sharp; man 2 is filled only above the stair railing).
+swiftc -O "$ROOT/tools/imagetool.swift" -o "$TMP/imagetool"
+"$TMP/imagetool" rowfill "$ST/still-showroom-aisle-depth.jpg" "$TMP/still-showroom-aisle-depth.jpg" \
+  602,234,17,18 585,252,42,6:raw 585,258,42,29 662,233,18,21 646,250,44,36,630,294,690,262
 # Crops start at y=125 to cut off the caption text burned into the video frames.
-for n in storefront-sign-clean showroom-aisle-depth showroom-seating-taps-wall showroom-decor-wall-upper; do
+for n in storefront-sign-clean showroom-seating-taps-wall showroom-decor-wall-upper; do
   crop "$ST/still-$n.jpg" "$OUT/showroom/$n.jpg" 481 855 125 112 1000 74
 done
+crop "$TMP/still-showroom-aisle-depth.jpg" "$OUT/showroom/showroom-aisle-depth.jpg" 481 855 125 112 1000 74
 
 echo "Tile bond & grout -> $OUT/promo"
 for n in glory-tile-bond-20kg oriel-tile-bond-20kg ornate-tile-grout-1kg; do   # Ornate Tile Bond is deliberately not used

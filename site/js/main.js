@@ -26,6 +26,12 @@
     return fmt(n, 0) + ' ' + (n === 1 ? one : (many || one + 's'));
   }
 
+  // Fields that bring up the on-screen keyboard. Selects are left out: Android opens a dialog for them.
+  function isText(el) {
+    return !!el && (el.tagName === 'TEXTAREA' ||
+      (el.tagName === 'INPUT' && !/^(radio|checkbox|button|submit|reset|range|color|file|image|hidden)$/.test(el.type)));
+  }
+
   function onMediaChange(mq, fn) {
     if (mq.addEventListener) mq.addEventListener('change', fn);
     else if (mq.addListener) mq.addListener(fn);
@@ -122,9 +128,10 @@
     onScroll();
   });
 
-  /* ---------- Keep keyboard focus out from under the sticky header ---------- */
+  /* ---------- Keep keyboard focus out from under the sticky header and the mobile action bar ---------- */
   safely('focus visibility', function () {
     if (!header) return;
+    var bar = $('.action-bar');
     document.addEventListener('focusin', function (e) {
       var t = e.target;
       if (!t || !t.getBoundingClientRect || header.contains(t)) return;
@@ -134,6 +141,12 @@
       var headerBottom = header.getBoundingClientRect().bottom;
       var r = t.getBoundingClientRect();
       if (r.top < headerBottom + 8) window.scrollBy(0, r.top - headerBottom - 16);
+      // The bar is fixed, so offsetParent is always null: check its boxes instead (none while display: none,
+      // i.e. above 960px). It slides away while a text field has focus, so those need no room.
+      else if (bar && !bar.contains(t) && !isText(t) && bar.getClientRects().length && !bar.classList.contains('is-hidden')) {
+        var barTop = bar.getBoundingClientRect().top;
+        if (r.bottom > barTop - 8) window.scrollBy(0, r.bottom - barTop + 16);
+      }
     });
   });
 
@@ -143,19 +156,24 @@
     if (!('IntersectionObserver' in window) || !navLinks.length) return;
     var linkFor = {};
     navLinks.forEach(function (a) { linkFor[a.getAttribute('href').slice(1)] = a; });
+    var inBand = {};   // ids of the sections currently crossing the middle band
     var observer = new IntersectionObserver(function (entries) {
+      var current = null;
       entries.forEach(function (entry) {
-        if (!entry.isIntersecting) return;
-        navLinks.forEach(function (a) {
-          a.classList.remove('is-active');
-          a.removeAttribute('aria-current');
-        });
-        var link = linkFor[entry.target.id];
-        if (link) {
-          link.classList.add('is-active');
-          link.setAttribute('aria-current', 'location');
-        }
+        if (entry.isIntersecting) { inBand[entry.target.id] = true; current = entry.target.id; }
+        else delete inBand[entry.target.id];
       });
+      // Back at the hero (no section in the band), nothing is highlighted
+      if (!current) current = Object.keys(inBand)[0] || null;
+      navLinks.forEach(function (a) {
+        a.classList.remove('is-active');
+        a.removeAttribute('aria-current');
+      });
+      var link = current && linkFor[current];
+      if (link) {
+        link.classList.add('is-active');
+        link.setAttribute('aria-current', 'location');
+      }
     }, { rootMargin: '-45% 0px -50% 0px' });
     $all('main section[id]').forEach(function (s) { observer.observe(s); });
   });
@@ -181,6 +199,14 @@
           }
         });
         if (status) status.textContent = plural(shown, 'tile style') + ' shown';
+        // Filtered grids drop the wide-card layout (no holes); the phone rail jumps back to its first card
+        var grid = $('.swatch-grid');
+        if (grid) {
+          grid.classList.toggle('is-filtered', filter !== 'all');
+          grid.scrollLeft = 0;
+        }
+        var count = $('[data-rail-count]');
+        if (count) count.textContent = String(shown);
       });
     });
   });
@@ -466,22 +492,106 @@
     });
   });
 
-  /* ---------- Floating WhatsApp button: step aside for full-width WhatsApp buttons ---------- */
+  /* ---------- Floating WhatsApp button (desktop) and action bar (≤960px): step aside for full-width WhatsApp buttons ---------- */
   safely('floating button', function () {
-    var fab = $('.wa-float');
+    var floats = $all('.wa-float, .action-bar');
     var targets = $all('[data-hide-fab]');
-    if (!fab || !targets.length || !('IntersectionObserver' in window)) return;
+    // .is-ready: the action bar stays out of sight until the first check, so it never flashes or slides away on load
+    var ready = function () { floats.forEach(function (f) { f.classList.add('is-ready'); }); };
+    if (!floats.length) return;
+    if (!targets.length || !('IntersectionObserver' in window)) return ready();
     var inView = targets.map(function () { return false; });
     var observer = new IntersectionObserver(function (entries) {
       entries.forEach(function (entry) {
         inView[targets.indexOf(entry.target)] = entry.isIntersecting;
       });
-      fab.classList.toggle('is-hidden', inView.some(Boolean));
+      var hide = inView.some(Boolean);
+      floats.forEach(function (f) { f.classList.toggle('is-hidden', hide); });
+      ready();
     });
     targets.forEach(function (t) { observer.observe(t); });
   });
 
+  /* ---------- Typing: the action bar slides away while the on-screen keyboard is up ---------- */
+  safely('typing', function () {
+    var root = document.documentElement;
+    document.addEventListener('focusin', function (e) { root.classList.toggle('is-typing', isText(e.target)); });
+    document.addEventListener('focusout', function () { root.classList.remove('is-typing'); });
+  });
+
+  /* ---------- Outlet video: nothing downloads until a tap swaps the poster for the video ---------- */
+  safely('video', function () {
+    $all('.video-facade').forEach(function (link) {
+      link.addEventListener('click', function (e) {
+        e.preventDefault();
+        var img = $('img', link);
+        var video = document.createElement('video');
+        video.controls = true;
+        video.muted = true;
+        video.loop = true;
+        video.playsInline = true;
+        video.setAttribute('playsinline', '');
+        video.width = 480;
+        video.height = 848;
+        video.setAttribute('aria-label', 'Showroom fittings display (video)');
+        video.setAttribute('aria-describedby', 'outlet-video-desc');
+        if (img && (img.currentSrc || img.src)) video.poster = img.currentSrc || img.src;
+        video.src = link.href;
+        link.replaceWith(video);
+        video.focus();
+        var p = video.play();
+        if (p && p.catch) p.catch(function () {});
+      });
+    });
+  });
+
+  /* ---------- Map: the Google iframe (and its scripts and cookies) loads only when "Show map here" is tapped ---------- */
+  safely('map', function () {
+    var btn = $('#map-load');
+    var tpl = $('#map-template');
+    var map = btn && btn.closest('.map');
+    if (!btn || !tpl || !map || !('content' in tpl)) return;
+    btn.hidden = false;
+    var note = $('.map__note', map);
+    if (note) note.hidden = false;
+    btn.addEventListener('click', function () {
+      map.appendChild(tpl.content.cloneNode(true));
+      var facade = $('.map__facade', map);
+      if (facade) facade.remove();
+      var frame = $('iframe', map);
+      if (frame) frame.focus();
+    });
+  });
+
+  /* ---------- Urdu font: fetched only when the store policy comes near (or before printing) ---------- */
+  safely('urdu font', function () {
+    var root = document.documentElement;
+    var load = function () {
+      if (root.classList.contains('ur-font')) return;
+      var link = document.createElement('link');
+      link.rel = 'stylesheet';
+      link.href = 'https://fonts.googleapis.com/css2?family=Noto+Naskh+Arabic:wght@400;600&display=swap';
+      document.head.appendChild(link);
+      root.classList.add('ur-font');
+    };
+    window.addEventListener('beforeprint', load);
+    var policy = $('#policy');
+    if (!policy || !('IntersectionObserver' in window)) return load();
+    var io = new IntersectionObserver(function (entries) {
+      if (entries[0].isIntersecting) { load(); io.disconnect(); }
+    }, { rootMargin: '800px 0px' });
+    io.observe(policy);
+  });
+
   /* ---------- Reveal on scroll ---------- */
+  /* ---------- Footer marquee ---------- */
+  safely('marquee', function () {
+    var marquee = $('.footer-marquee');
+    if (!marquee) return;
+    // Tabbing to a link can scroll the clipped strip sideways; put it back when focus leaves
+    marquee.addEventListener('focusout', function () { marquee.scrollLeft = 0; });
+  });
+
   var revealOk = safely('reveal', function () {
     var reveals = $all('.reveal');
     var showAll = function () { reveals.forEach(function (r) { r.classList.add('is-visible'); }); };

@@ -1,0 +1,12 @@
+# Cache rules for Cloudflare Workers static assets (this file is read by Cloudflare, not served).
+# Images and video: new files get new names, so a 30-day cache is safe.
+# CSS and JS: index.html loads them with ?v=N; bump N on every change.
+# Takes effect only on a deploy the owner has approved. Check afterwards with: curl -I <url>
+/assets/img/*
+  Cache-Control: public, max-age=2592000
+/assets/video/*
+  Cache-Control: public, max-age=2592000
+/css/*
+  Cache-Control: public, max-age=86400
+/js/*
+  Cache-Control: public, max-age=86400

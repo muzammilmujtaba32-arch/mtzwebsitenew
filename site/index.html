@@ -27,15 +27,18 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Naskh+Arabic:wght@400;600&amp;family=Poppins:wght@400;500;600;700&amp;display=swap">
-  <link rel="stylesheet" href="css/style.css">
+  <!-- Poppins 400/500/600 only. The Urdu font (Noto Naskh Arabic) is loaded by main.js when the store policy comes near;
+       without JavaScript it loads straight away. -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&amp;display=swap">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Naskh+Arabic:wght@400;600&amp;display=swap"></noscript>
+  <link rel="stylesheet" href="css/style.css?v=3">
 
   <script>
     // Enables scroll-reveal styling; falls back to fully visible content if main.js never finishes.
     document.documentElement.classList.add('js');
     setTimeout(function () { if (!window.MTZ_READY) document.documentElement.classList.remove('js'); }, 3000);
   </script>
-  <script src="js/main.js" defer></script>
+  <script src="js/main.js?v=3" defer></script>
 
   <script type="application/ld+json">
   {
@@ -151,10 +154,11 @@
     <symbol id="i-award" viewBox="0 0 24 24"><circle cx="12" cy="9" r="6"/><path d="M8.5 14.2 7 22l5-3 5 3-1.5-7.8"/></symbol>
     <symbol id="i-globe" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15 15 0 0 1 0 20M12 2a15 15 0 0 0 0 20"/></symbol>
     <symbol id="i-tag" viewBox="0 0 24 24"><path d="M20.6 13.4 13.4 20.6a2 2 0 0 1-2.8 0L2 12V2h10l8.6 8.6a2 2 0 0 1 0 2.8Z"/><circle cx="7" cy="7" r="1.5"/></symbol>
+    <symbol id="i-play" viewBox="0 0 24 24"><path fill="currentColor" stroke="none" d="M8 5.5v13l10.5-6.5Z"/></symbol>
   </svg>
 
   <!-- Top bar -->
-  <aside class="topbar" id="top" aria-label="Shop contact details">
+  <aside class="topbar" aria-label="Shop contact details">
     <div class="container topbar__inner">
       <p class="topbar__item">
         <svg class="icon" aria-hidden="true"><use href="#i-pin"/></svg>
@@ -176,7 +180,7 @@
   <header class="site-header">
     <div class="container site-header__inner">
       <a class="brand" href="#top" aria-label="Mumtaz Tile Zone &amp; Sanitary Ware, back to top">
-        <img src="assets/logo/mumtaz-logo-horizontal-primary.svg" alt="Mumtaz Tile Zone &amp; Sanitary Ware" width="172" height="59">
+        <img src="assets/logo/mumtaz-logo-horizontal-reversed-white.svg" alt="Mumtaz Tile Zone &amp; Sanitary Ware" width="172" height="59">
       </a>
 
       <button class="nav-toggle" type="button" aria-controls="site-nav" aria-expanded="false" aria-label="Menu">
@@ -186,15 +190,15 @@
 
       <nav class="nav" id="site-nav" aria-label="Main">
         <ul class="nav__list">
-          <li><a href="#products">Products</a></li>
           <li><a href="#collections">Tile styles</a></li>
+          <li><a href="#products">Products</a></li>
           <li><a href="#sanitary">Sanitary ware</a></li>
           <li><a href="#tile-bond">Tile bond</a></li>
           <li><a href="#calculator">Calculator</a></li>
           <li><a href="#about">About us</a></li>
           <li><a href="#visit">Visit us</a></li>
         </ul>
-        <a class="btn btn--primary nav__cta" href="https://wa.me/923059252437" target="_blank" rel="noopener"
+        <a class="btn btn--wa nav__cta" href="https://wa.me/923059252437" target="_blank" rel="noopener"
            data-wa="Assalam o Alaikum! I'd like to ask about your tiles and sanitary ware.">
           <svg class="icon" aria-hidden="true"><use href="#i-wa"/></svg>WhatsApp us
         </a>
@@ -204,103 +208,564 @@
   <div class="nav-backdrop" aria-hidden="true"></div>
 
   <main id="main" tabindex="-1">
-    <!-- Hero -->
-    <section class="hero" aria-labelledby="hero-title">
-      <div class="container hero__inner">
-        <div class="hero__copy">
-          <p class="eyebrow eyebrow--light rise">
-            <span><span class="nw">Tiles&nbsp;·</span> <span class="nw">Sanitary ware&nbsp;·</span> <span class="nw">Bathroom fittings</span></span>
-          </p>
-          <h1 class="hero__title rise rise-d1" id="hero-title">
-            <span class="visually-hidden">Mumtaz Tile Zone &amp; Sanitary Ware, Khairpur Mirs: </span>Excellence in Every&nbsp;Tile
-          </h1>
-          <p class="hero__lead rise rise-d2">
-            Since 2000, we've brought floor and wall tiles, sanitary ware and bathroom fittings together under one roof.
-            Come and see them in person at our showroom on Station Road, Khairpur Mirs.
-          </p>
-          <div class="hero__actions rise rise-d3" data-hide-fab>
-            <a class="btn btn--light btn--lg" href="#visit">
-              <svg class="icon" aria-hidden="true"><use href="#i-store"/></svg>Visit our showroom
-            </a>
-            <a class="btn btn--ghost-light btn--lg" href="https://wa.me/923059252437" target="_blank" rel="noopener"
-               data-wa="Assalam o Alaikum! I'd like to ask about your tiles and sanitary ware.">
-              <svg class="icon" aria-hidden="true"><use href="#i-wa"/></svg>Chat on WhatsApp
-            </a>
-          </div>
-          <p class="hero__phones rise rise-d3">
-            <span class="hero__phones-label">
-              <svg class="icon" aria-hidden="true"><use href="#i-phone"/></svg>Call / WhatsApp
-            </span>
-            <a class="nw" href="tel:+923059252437">0305-9252437</a>
-            <a class="nw" href="tel:+923018310850">0301-8310850</a>
-          </p>
-        </div>
-
-        <div class="hero__board rise rise-d2" aria-hidden="true">
-          <div class="board">
-            <div class="board__tile board__tile--lg">
-              <img src="assets/img/products/tile-blue-marble-slab.jpg" alt="" width="900" height="675">
-              <span class="board__label">In our showroom</span>
-            </div>
-            <div class="board__tile"><img src="assets/img/products/tile-black-gold-marble.jpg" alt="" width="847" height="600"></div>
-            <div class="board__tile"><img src="assets/img/products/tile-wood-plank.jpg" alt="" width="955" height="712"></div>
-            <div class="board__tile"><img src="assets/img/sanitary/real-gold-basin.jpg" alt="" width="1080" height="1079"></div>
-            <div class="board__tile"><img src="assets/img/products/tile-patterned.jpg" alt="" width="1000" height="750"></div>
-            <div class="board__tile"><img src="assets/img/products/tile-white-marble.jpg" alt="" width="847" height="600"></div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Quick info -->
-    <div class="infostrip">
-      <div class="container">
-        <div class="infostrip__grid reveal">
-          <div class="infocard">
-            <span class="tile-icon"><svg class="icon" aria-hidden="true"><use href="#i-pin"/></svg></span>
-            <div>
-              <p class="infocard__title">Showroom</p>
-              <p class="infocard__text">Station Road, Opp. Soneri Bank, Near Khaki Shah Pull, Khairpur Mirs</p>
-              <a class="link-arrow" href="https://www.google.com/maps/search/?api=1&amp;query=Khaki+Shah+Pull%2C+Station+Road%2C+Khairpur+Mirs" target="_blank" rel="noopener">
-                Get directions<svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg>
+    <!-- Hero: a full-bleed catalogue room scene, tall crop on phones (≤699px), wide above. The only eager image. -->
+    <section class="hero" aria-labelledby="hero-title" style="--hero-focus: 50% 35%; --hero-focus-wide: 55% 55%">
+      <picture class="hero__media">
+        <source media="(max-width: 699px)" type="image/avif" sizes="100vw" width="750" height="1000"
+                srcset="assets/img/hero/hero-tall-600.avif 600w, assets/img/hero/hero-tall-750.avif 750w">
+        <source media="(max-width: 699px)" srcset="assets/img/hero/hero-tall-750.jpg" width="750" height="1000">
+        <source type="image/avif" sizes="(max-width: 960px) 150vw, 100vw" width="1600" height="900"
+                srcset="assets/img/hero/hero-wide-1280.avif 1280w, assets/img/hero/hero-wide-1600.avif 1600w, assets/img/hero/hero-wide-1920.avif 1920w">
+        <img src="assets/img/hero/hero-wide-1280.jpg" width="1280" height="720" fetchpriority="high"
+             alt="Kitchen and dining room with a black-and-gold marble floor inset framed by gold border tiles, and blue-and-gold marble columns">
+      </picture>
+      <div class="hero__inner">
+        <div class="container">
+          <div class="hero__copy">
+            <p class="eyebrow eyebrow--light rise">
+              <span><span class="nw">Tiles&nbsp;·</span> <span class="nw">Sanitary ware&nbsp;·</span> <span class="nw">Bathroom fittings</span></span>
+            </p>
+            <h1 class="hero__title rise rise-d1" id="hero-title">
+              <span class="visually-hidden">Mumtaz Tile Zone &amp; Sanitary Ware, Khairpur Mirs: </span>Excellence in Every&nbsp;Tile
+            </h1>
+            <p class="hero__lead rise rise-d2">
+              Since 2000, we've brought floor and wall tiles, sanitary ware and bathroom fittings together under one roof.<span class="hero__lead-more">
+              Come and see them in person at our showroom on Station Road, Khairpur Mirs.</span>
+            </p>
+            <div class="hero__actions rise rise-d3" data-hide-fab>
+              <a class="btn btn--wa btn--lg" href="https://wa.me/923059252437" target="_blank" rel="noopener"
+                 data-wa="Assalam o Alaikum! I'd like to ask about your tiles and sanitary ware.">
+                <svg class="icon" aria-hidden="true"><use href="#i-wa"/></svg>Chat on WhatsApp
+              </a>
+              <a class="btn btn--ghost-light btn--lg hero__visit" href="#visit">
+                <svg class="icon" aria-hidden="true"><use href="#i-store"/></svg>Visit our showroom
               </a>
             </div>
-          </div>
-          <div class="infocard">
-            <span class="tile-icon"><svg class="icon" aria-hidden="true"><use href="#i-phone"/></svg></span>
-            <div>
-              <p class="infocard__title">Call / WhatsApp</p>
-              <p class="infocard__text infocard__phones">
-                <a href="tel:+923059252437">0305-9252437</a>
-                <a href="tel:+923018310850">0301-8310850</a>
-              </p>
-            </div>
-          </div>
-          <div class="infocard">
-            <span class="tile-icon"><svg class="icon" aria-hidden="true"><use href="#i-ig"/></svg></span>
-            <div>
-              <p class="infocard__title">See our latest designs</p>
-              <div class="infocard__social">
-                <a href="https://www.facebook.com/share/1DME8Le11h/" target="_blank" rel="noopener" aria-label="Facebook: Mumtaz Tile Zone &amp; Sanitary Ware"><svg class="icon" aria-hidden="true"><use href="#i-fb"/></svg></a>
-                <a href="https://www.instagram.com/mumtaztilezone/" target="_blank" rel="noopener" aria-label="Instagram @mumtaztilezone"><svg class="icon" aria-hidden="true"><use href="#i-ig"/></svg></a>
-                <a href="https://www.tiktok.com/@mumtaztilezones" target="_blank" rel="noopener" aria-label="TikTok @mumtaztilezones"><svg class="icon" aria-hidden="true"><use href="#i-tt"/></svg></a>
-              </div>
-            </div>
+            <p class="hero__phones rise rise-d3">
+              <span class="hero__phones-label">
+                <svg class="icon" aria-hidden="true"><use href="#i-phone"/></svg>Call / WhatsApp
+              </span>
+              <a class="nw" href="tel:+923059252437">0305-9252437</a>
+              <a class="nw" href="tel:+923018310850">0301-8310850</a>
+            </p>
           </div>
         </div>
       </div>
-    </div>
+      <p class="hero__caption">Shown: K-Gold series border tiles, 120&nbsp;×&nbsp;600&nbsp;mm · Catalogue image</p>
+    </section>
 
-    <!-- Products -->
-    <section class="section products" id="products" aria-labelledby="products-title">
+    <!-- Proof band: facts, address and socials (a div, not a section, so the active-nav observer ignores it) -->
+    <div class="proof">
       <div class="container">
-        <ul class="trust reveal" aria-label="About Mumtaz Tile Zone at a glance">
+        <ul class="trust" aria-label="About Mumtaz Tile Zone at a glance">
           <li><span class="trust__value">Since 2000</span><span class="trust__label">Established 2 January 2000</span></li>
           <li><span class="trust__value">25+ years</span><span class="trust__label">of experience in Khairpur Mirs</span></li>
           <li><span class="trust__value">Imported</span><span class="trust__label">selected products from China</span></li>
           <li><span class="trust__value">Retail &amp; wholesale</span><span class="trust__label">for homes and projects</span></li>
         </ul>
+        <div class="proof__visit">
+          <p><svg class="icon" aria-hidden="true"><use href="#i-pin"/></svg>Station Road, Opp. Soneri Bank, Near Khaki Shah Pull, Khairpur Mirs</p>
+          <a class="link-arrow link-arrow--light" href="https://www.google.com/maps/search/?api=1&amp;query=Khaki+Shah+Pull%2C+Station+Road%2C+Khairpur+Mirs" target="_blank" rel="noopener">
+            Get directions<svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg>
+          </a>
+          <div class="proof__social">
+            <a href="https://www.facebook.com/share/1DME8Le11h/" target="_blank" rel="noopener" aria-label="Facebook: Mumtaz Tile Zone &amp; Sanitary Ware"><svg class="icon" aria-hidden="true"><use href="#i-fb"/></svg></a>
+            <a href="https://www.instagram.com/mumtaztilezone/" target="_blank" rel="noopener" aria-label="Instagram @mumtaztilezone"><svg class="icon" aria-hidden="true"><use href="#i-ig"/></svg></a>
+            <a href="https://www.tiktok.com/@mumtaztilezones" target="_blank" rel="noopener" aria-label="TikTok @mumtaztilezones"><svg class="icon" aria-hidden="true"><use href="#i-tt"/></svg></a>
+          </div>
+        </div>
+      </div>
+    </div>
 
+    <!-- Tile styles -->
+    <section class="section" id="collections" aria-labelledby="collections-title">
+      <div class="container">
+        <div class="section-head reveal">
+          <p class="eyebrow">Tile styles</p>
+          <h2 id="collections-title">Find the look you love</h2>
+          <p>From simple everyday tiles to classic and bold luxury designs, there's a style for every home. New designs arrive often, so message us for the newest arrivals, sizes and prices.</p>
+        </div>
+
+        <!-- Single-select filters over data-tags (look + rooms): the three looks first, then the rooms -->
+        <div class="filters reveal" role="group" aria-label="Filter tile styles by look or room">
+          <button class="chip" type="button" data-filter="all" aria-pressed="true">All styles</button>
+          <button class="chip" type="button" data-filter="luxury" aria-pressed="false">Luxury</button>
+          <button class="chip" type="button" data-filter="classic" aria-pressed="false">Classic</button>
+          <button class="chip" type="button" data-filter="simple" aria-pressed="false">Simple</button>
+          <span class="filters__divider" aria-hidden="true"></span>
+          <button class="chip" type="button" data-filter="floor" aria-pressed="false">Floor</button>
+          <button class="chip" type="button" data-filter="wall" aria-pressed="false">Wall</button>
+          <button class="chip" type="button" data-filter="bathroom" aria-pressed="false">Bathroom</button>
+          <button class="chip" type="button" data-filter="kitchen" aria-pressed="false">Kitchen</button>
+          <button class="chip" type="button" data-filter="living" aria-pressed="false">Living &amp; office</button>
+          <button class="chip" type="button" data-filter="outdoor" aria-pressed="false">Outdoor</button>
+        </div>
+        <p class="visually-hidden" id="filter-status" aria-live="polite"></p>
+        <!-- Phones only (the grid is a swipe rail at ≤699px); main.js keeps the count in step with the filter -->
+        <p class="rail-hint" aria-hidden="true"><span>Swipe to see all <span data-rail-count>18</span> styles</span><svg class="icon"><use href="#i-arrow"/></svg></p>
+
+        <!-- 18 designs from the shop's stock, in catalogue room scenes, in three looks. DOM order = visual order: at 3
+             columns the 3 wide cards fill 7 rows exactly (wide+1 / 3 / 1+wide / 3 / wide+1 / 3 / 3). Visible .tags = the room part of data-tags. -->
+        <div class="swatch-grid rail reveal">
+          <article class="swatch-card swatch-card--wide" data-tags="luxury floor living">
+            <div class="swatch-card__media">
+              <picture class="swatch-card__photo">
+                <source media="(max-width: 699px)" type="image/avif" sizes="78vw" width="720" height="900"
+                        srcset="assets/img/looks/living-blue-gold-m-360.avif 360w, assets/img/looks/living-blue-gold-m-540.avif 540w, assets/img/looks/living-blue-gold-m-720.avif 720w">
+                <source media="(max-width: 699px)" srcset="assets/img/looks/living-blue-gold-m-540.jpg" width="540" height="675">
+                <source type="image/avif" sizes="(min-width: 1281px) 792px, 64vw" width="1000" height="600"
+                        srcset="assets/img/looks/living-blue-gold-640.avif 640w, assets/img/looks/living-blue-gold-1000.avif 1000w">
+                <img src="assets/img/looks/living-blue-gold-1000.jpg" alt="Living room with a grey modular sofa, an orange accent chair and a black round coffee table on a glossy floor of white marble-look tiles with blue-grey clouds and gold veins" width="1000" height="600" loading="lazy" decoding="async">
+              </picture>
+              <picture class="swatch-card__face">
+                <source type="image/avif" srcset="assets/img/faces/living-blue-gold-128.avif">
+                <img src="assets/img/faces/living-blue-gold-128.jpg" alt="" width="128" height="128" loading="lazy" decoding="async">
+              </picture>
+            </div>
+            <div class="swatch-card__body">
+              <p class="swatch-card__look">Luxury</p>
+              <h3>White, blue &amp; gold marble-look</h3>
+              <p class="swatch-card__size">400&nbsp;×&nbsp;800&nbsp;mm (16&nbsp;×&nbsp;32″)</p>
+              <p>White marble look with pale blue-grey clouds and bold gold veins, shown on a living room floor.</p>
+              <ul class="tags" aria-label="Suitable for"><li>Floor</li><li>Living &amp; office</li></ul>
+              <a class="link-arrow" href="https://wa.me/923059252437" target="_blank" rel="noopener"
+                 data-wa="Assalam o Alaikum! I'm interested in white, blue &amp; gold marble-look tiles (400 × 800 mm / 16 × 32″, design TC48GG029P). Please share the price and availability.">
+                Ask for designs &amp; prices<span class="visually-hidden">: white, blue &amp; gold marble-look tiles</span><svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg>
+              </a>
+            </div>
+          </article>
+
+          <article class="swatch-card" data-tags="classic floor living">
+            <div class="swatch-card__media">
+              <picture class="swatch-card__photo">
+                <source type="image/avif" sizes="(min-width: 1281px) 384px, (min-width: 700px) 31vw, 78vw"
+                        srcset="assets/img/looks/white-marble-360.avif 360w, assets/img/looks/white-marble-540.avif 540w, assets/img/looks/white-marble-720.avif 720w">
+                <img src="assets/img/looks/white-marble-540.jpg" alt="Dining room with mauve and grey velvet chairs round a gold-framed table on a high-gloss white marble-look floor with soft grey veins" width="540" height="675" loading="lazy" decoding="async">
+              </picture>
+              <picture class="swatch-card__face">
+                <source type="image/avif" srcset="assets/img/faces/white-marble-128.avif">
+                <img src="assets/img/faces/white-marble-128.jpg" alt="" width="128" height="128" loading="lazy" decoding="async">
+              </picture>
+            </div>
+            <div class="swatch-card__body">
+              <p class="swatch-card__look">Classic</p>
+              <h3>Classic white marble-look</h3>
+              <p class="swatch-card__size">600&nbsp;×&nbsp;600&nbsp;mm (24&nbsp;×&nbsp;24″) · glaze polished porcelain</p>
+              <p>Bright white high-gloss tile with faint, thin grey veins that reflects the light, for dining and living room floors.</p>
+              <ul class="tags" aria-label="Suitable for"><li>Floor</li><li>Living &amp; office</li></ul>
+              <a class="link-arrow" href="https://wa.me/923059252437" target="_blank" rel="noopener"
+                 data-wa="Assalam o Alaikum! I'm interested in classic white marble-look tiles (600 × 600 mm / 24 × 24″, design L62043). Please share the price and availability.">
+                Ask for designs &amp; prices<span class="visually-hidden">: classic white marble-look tiles</span><svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg>
+              </a>
+            </div>
+          </article>
+
+          <article class="swatch-card" data-tags="simple floor living">
+            <div class="swatch-card__media">
+              <picture class="swatch-card__photo">
+                <source type="image/avif" sizes="(min-width: 1281px) 384px, (min-width: 700px) 31vw, 78vw"
+                        srcset="assets/img/looks/plain-beige-360.avif 360w, assets/img/looks/plain-beige-540.avif 540w, assets/img/looks/plain-beige-720.avif 720w">
+                <img src="assets/img/looks/plain-beige-540.jpg" alt="Dining area with dark and grey upholstered chairs on a plain light beige polished floor tile with glossy reflections" width="540" height="675" loading="lazy" decoding="async">
+              </picture>
+              <picture class="swatch-card__face">
+                <source type="image/avif" srcset="assets/img/faces/plain-beige-128.avif">
+                <img src="assets/img/faces/plain-beige-128.jpg" alt="" width="128" height="128" loading="lazy" decoding="async">
+              </picture>
+            </div>
+            <div class="swatch-card__body">
+              <p class="swatch-card__look">Simple</p>
+              <h3>Plain beige polished</h3>
+              <p class="swatch-card__size">600&nbsp;×&nbsp;600&nbsp;mm (24&nbsp;×&nbsp;24″) · glaze polished porcelain</p>
+              <p>Plain light beige tile with a high-gloss shine, an easy everyday choice for living and dining rooms.</p>
+              <ul class="tags" aria-label="Suitable for"><li>Floor</li><li>Living &amp; office</li></ul>
+              <a class="link-arrow" href="https://wa.me/923059252437" target="_blank" rel="noopener"
+                 data-wa="Assalam o Alaikum! I'm interested in plain beige polished tiles (600 × 600 mm / 24 × 24″, design L62031). Please share the price and availability.">
+                Ask for designs &amp; prices<span class="visually-hidden">: plain beige polished tiles</span><svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg>
+              </a>
+            </div>
+          </article>
+
+          <article class="swatch-card" data-tags="luxury floor living">
+            <div class="swatch-card__media">
+              <picture class="swatch-card__photo">
+                <source type="image/avif" sizes="(min-width: 1281px) 384px, (min-width: 700px) 31vw, 78vw"
+                        srcset="assets/img/looks/white-gold-360.avif 360w, assets/img/looks/white-gold-540.avif 540w, assets/img/looks/white-gold-720.avif 720w">
+                <img src="assets/img/looks/white-gold-540.jpg" alt="Living room with a white sofa, a white coffee table and a blue patterned rug on a floor of white marble-look tiles with bold gold and grey veins." width="540" height="675" loading="lazy" decoding="async">
+              </picture>
+              <picture class="swatch-card__face">
+                <source type="image/avif" srcset="assets/img/faces/white-gold-128.avif">
+                <img src="assets/img/faces/white-gold-128.jpg" alt="" width="128" height="128" loading="lazy" decoding="async">
+              </picture>
+            </div>
+            <div class="swatch-card__body">
+              <p class="swatch-card__look">Luxury</p>
+              <h3>White &amp; gold marble-look</h3>
+              <p class="swatch-card__size">600&nbsp;×&nbsp;600&nbsp;mm (24&nbsp;×&nbsp;24″)</p>
+              <p>White marble look with bold gold veins and soft grey clouding, suited to living room floors.</p>
+              <ul class="tags" aria-label="Suitable for"><li>Floor</li><li>Living &amp; office</li></ul>
+              <a class="link-arrow" href="https://wa.me/923059252437" target="_blank" rel="noopener"
+                 data-wa="Assalam o Alaikum! I'm interested in white &amp; gold marble-look tiles (600 × 600 mm, design KJ66006). Please share the price and availability.">
+                Ask for designs &amp; prices<span class="visually-hidden">: white &amp; gold marble-look tiles</span><svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg>
+              </a>
+            </div>
+          </article>
+
+          <article class="swatch-card" data-tags="classic floor wall living">
+            <div class="swatch-card__media">
+              <picture class="swatch-card__photo">
+                <source type="image/avif" sizes="(min-width: 1281px) 384px, (min-width: 700px) 31vw, 78vw"
+                        srcset="assets/img/looks/calacatta-360.avif 360w, assets/img/looks/calacatta-540.avif 540w">
+                <img src="assets/img/looks/calacatta-540.jpg" alt="Living room with a grey channel-tufted sofa and a checked armchair, the floor and walls laid in large white marble-look tiles with grey and gold veins" width="540" height="675" loading="lazy" decoding="async">
+              </picture>
+              <picture class="swatch-card__face">
+                <source type="image/avif" srcset="assets/img/faces/calacatta-128.avif">
+                <img src="assets/img/faces/calacatta-128.jpg" alt="" width="128" height="128" loading="lazy" decoding="async">
+              </picture>
+            </div>
+            <div class="swatch-card__body">
+              <p class="swatch-card__look">Classic</p>
+              <h3>Grey &amp; gold veined marble-look</h3>
+              <p class="swatch-card__size">600&nbsp;×&nbsp;1200&nbsp;mm (24&nbsp;×&nbsp;48″)</p>
+              <p>White marble look with soft grey veins and thin amber-gold veins, shown on the floor and walls of a living room.</p>
+              <ul class="tags" aria-label="Suitable for"><li>Floor</li><li>Wall</li><li>Living &amp; office</li></ul>
+              <a class="link-arrow" href="https://wa.me/923059252437" target="_blank" rel="noopener"
+                 data-wa="Assalam o Alaikum! I'm interested in grey &amp; gold veined marble-look tiles (600 × 1200 mm / 24 × 48″, design L12065). Please share the price and availability.">
+                Ask for designs &amp; prices<span class="visually-hidden">: grey &amp; gold veined marble-look tiles</span><svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg>
+              </a>
+            </div>
+          </article>
+
+          <article class="swatch-card" data-tags="simple floor living">
+            <div class="swatch-card__media">
+              <picture class="swatch-card__photo">
+                <source type="image/avif" sizes="(min-width: 1281px) 384px, (min-width: 700px) 31vw, 78vw"
+                        srcset="assets/img/looks/light-grey-matt-360.avif 360w, assets/img/looks/light-grey-matt-540.avif 540w, assets/img/looks/light-grey-matt-720.avif 720w">
+                <img src="assets/img/looks/light-grey-matt-540.jpg" alt="Modern living room with a grey sofa, black and gold round coffee tables and a plant, on a plain light grey matt floor tile" width="540" height="675" loading="lazy" decoding="async">
+              </picture>
+              <picture class="swatch-card__face">
+                <source type="image/avif" srcset="assets/img/faces/light-grey-matt-128.avif">
+                <img src="assets/img/faces/light-grey-matt-128.jpg" alt="" width="128" height="128" loading="lazy" decoding="async">
+              </picture>
+            </div>
+            <div class="swatch-card__body">
+              <p class="swatch-card__look">Simple</p>
+              <h3>Light grey matt</h3>
+              <p class="swatch-card__size">600&nbsp;×&nbsp;600&nbsp;mm (24&nbsp;×&nbsp;24″) · matt</p>
+              <p>Plain light grey matt tile with a soft concrete-look clouding, calm and practical for living room floors.</p>
+              <ul class="tags" aria-label="Suitable for"><li>Floor</li><li>Living &amp; office</li></ul>
+              <a class="link-arrow" href="https://wa.me/923059252437" target="_blank" rel="noopener"
+                 data-wa="Assalam o Alaikum! I'm interested in light grey matt tiles (600 × 600 mm / 24 × 24″, design ORM66002). Please share the price and availability.">
+                Ask for designs &amp; prices<span class="visually-hidden">: light grey matt tiles</span><svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg>
+              </a>
+            </div>
+          </article>
+
+          <article class="swatch-card swatch-card--wide" data-tags="luxury floor wall kitchen">
+            <div class="swatch-card__media">
+              <picture class="swatch-card__photo">
+                <source media="(max-width: 699px)" type="image/avif" sizes="78vw" width="720" height="900"
+                        srcset="assets/img/looks/kitchen-white-gold-m-360.avif 360w, assets/img/looks/kitchen-white-gold-m-540.avif 540w, assets/img/looks/kitchen-white-gold-m-720.avif 720w">
+                <source media="(max-width: 699px)" srcset="assets/img/looks/kitchen-white-gold-m-540.jpg" width="540" height="675">
+                <source type="image/avif" sizes="(min-width: 1281px) 792px, 64vw" width="1000" height="600"
+                        srcset="assets/img/looks/kitchen-white-gold-640.avif 640w, assets/img/looks/kitchen-white-gold-1000.avif 1000w">
+                <img src="assets/img/looks/kitchen-white-gold-1000.jpg" alt="Kitchen with white handleless cabinets, a black worktop and a built-in black oven, the backsplash, walls and floor in white marble-look tiles with bold gold veins" width="1000" height="600" loading="lazy" decoding="async">
+              </picture>
+              <picture class="swatch-card__face">
+                <source type="image/avif" srcset="assets/img/faces/kitchen-white-gold-128.avif">
+                <img src="assets/img/faces/kitchen-white-gold-128.jpg" alt="" width="128" height="128" loading="lazy" decoding="async">
+              </picture>
+            </div>
+            <div class="swatch-card__body">
+              <p class="swatch-card__look">Luxury</p>
+              <h3>Kitchen in white &amp; gold</h3>
+              <p class="swatch-card__size">400&nbsp;×&nbsp;800&nbsp;mm (16&nbsp;×&nbsp;32″)</p>
+              <p>Bright white marble look with bold liquid-gold veins, shown on a kitchen backsplash, walls and floor.</p>
+              <ul class="tags" aria-label="Suitable for"><li>Floor</li><li>Wall</li><li>Kitchen</li></ul>
+              <a class="link-arrow" href="https://wa.me/923059252437" target="_blank" rel="noopener"
+                 data-wa="Assalam o Alaikum! I'm interested in white &amp; gold kitchen tiles (400 × 800 mm / 16 × 32″, design TC48GG002P). Please share the price and availability.">
+                Ask for designs &amp; prices<span class="visually-hidden">: white &amp; gold kitchen tiles</span><svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg>
+              </a>
+            </div>
+          </article>
+
+          <article class="swatch-card" data-tags="classic floor wall bathroom">
+            <div class="swatch-card__media">
+              <picture class="swatch-card__photo">
+                <source type="image/avif" sizes="(min-width: 1281px) 384px, (min-width: 700px) 31vw, 78vw"
+                        srcset="assets/img/looks/bath-white-360.avif 360w, assets/img/looks/bath-white-540.avif 540w, assets/img/looks/bath-white-720.avif 720w">
+                <img src="assets/img/looks/bath-white-540.jpg" alt="Bathroom with a red-brown wooden double vanity, two marble-look vessel basins and two framed mirrors, the walls and floor in white marble-look tiles with soft blue-grey veins" width="540" height="675" loading="lazy" decoding="async">
+              </picture>
+              <picture class="swatch-card__face">
+                <source type="image/avif" srcset="assets/img/faces/bath-white-128.avif">
+                <img src="assets/img/faces/bath-white-128.jpg" alt="" width="128" height="128" loading="lazy" decoding="async">
+              </picture>
+            </div>
+            <div class="swatch-card__body">
+              <p class="swatch-card__look">Classic</p>
+              <h3>Calm white bathroom</h3>
+              <p class="swatch-card__size">400&nbsp;×&nbsp;800&nbsp;mm (16&nbsp;×&nbsp;32″)</p>
+              <p>White marble look with soft blue-grey and fine gold veins, laid upright on bathroom walls and on the floor.</p>
+              <ul class="tags" aria-label="Suitable for"><li>Floor</li><li>Wall</li><li>Bathroom</li></ul>
+              <a class="link-arrow" href="https://wa.me/923059252437" target="_blank" rel="noopener"
+                 data-wa="Assalam o Alaikum! I'm interested in calm white bathroom tiles (400 × 800 mm / 16 × 32″, design TC48GG032P). Please share the price and availability.">
+                Ask for designs &amp; prices<span class="visually-hidden">: calm white bathroom tiles</span><svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg>
+              </a>
+            </div>
+          </article>
+
+          <article class="swatch-card" data-tags="luxury floor wall bathroom">
+            <div class="swatch-card__media">
+              <picture class="swatch-card__photo">
+                <source type="image/avif" sizes="(min-width: 1281px) 384px, (min-width: 700px) 31vw, 78vw"
+                        srcset="assets/img/looks/bath-black-gold-360.avif 360w, assets/img/looks/bath-black-gold-540.avif 540w, assets/img/looks/bath-black-gold-720.avif 720w">
+                <img src="assets/img/looks/bath-black-gold-540.jpg" alt="Bathroom behind glass partitions with a white WC and a round artwork, the walls and glossy floor in black marble-look tiles with bright gold veins" width="540" height="675" loading="lazy" decoding="async">
+              </picture>
+              <picture class="swatch-card__face">
+                <source type="image/avif" srcset="assets/img/faces/bath-black-gold-128.avif">
+                <img src="assets/img/faces/bath-black-gold-128.jpg" alt="" width="128" height="128" loading="lazy" decoding="async">
+              </picture>
+            </div>
+            <div class="swatch-card__body">
+              <p class="swatch-card__look">Luxury</p>
+              <h3>Black &amp; gold bathroom</h3>
+              <p class="swatch-card__size">400&nbsp;×&nbsp;800&nbsp;mm (16&nbsp;×&nbsp;32″)</p>
+              <p>Deep black marble look with a bright network of gold veins, for bold bathroom walls and floors.</p>
+              <ul class="tags" aria-label="Suitable for"><li>Floor</li><li>Wall</li><li>Bathroom</li></ul>
+              <a class="link-arrow" href="https://wa.me/923059252437" target="_blank" rel="noopener"
+                 data-wa="Assalam o Alaikum! I'm interested in black &amp; gold bathroom tiles (400 × 800 mm / 16 × 32″, design TC48GG017HP). Please share the price and availability.">
+                Ask for designs &amp; prices<span class="visually-hidden">: black &amp; gold bathroom tiles</span><svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg>
+              </a>
+            </div>
+          </article>
+
+          <article class="swatch-card" data-tags="simple floor living">
+            <div class="swatch-card__media">
+              <picture class="swatch-card__photo">
+                <source type="image/avif" sizes="(min-width: 1281px) 384px, (min-width: 700px) 31vw, 78vw"
+                        srcset="assets/img/looks/white-glossy-360.avif 360w, assets/img/looks/white-glossy-540.avif 540w, assets/img/looks/white-glossy-720.avif 720w">
+                <img src="assets/img/looks/white-glossy-540.jpg" alt="Bright living room with a white tufted sofa, a gold and crystal chandelier and a floor of white glossy 400 × 400 mm tiles reflecting the daylight." width="540" height="675" loading="lazy" decoding="async">
+              </picture>
+            </div>
+            <div class="swatch-card__body">
+              <p class="swatch-card__look">Simple</p>
+              <h3>Bright white glossy</h3>
+              <p class="swatch-card__size">400&nbsp;×&nbsp;400&nbsp;mm (16&nbsp;×&nbsp;16″) · glossy ceramic</p>
+              <p>Soft white glossy floor tiles with faint cream veining that keep living and dining rooms bright and calm.</p>
+              <ul class="tags" aria-label="Suitable for"><li>Floor</li><li>Living &amp; office</li></ul>
+              <a class="link-arrow" href="https://wa.me/923059252437" target="_blank" rel="noopener"
+                 data-wa="Assalam o Alaikum! I'm interested in bright white glossy tiles (400 × 400 mm, design L4201). Please share the price and availability.">
+                Ask for designs &amp; prices<span class="visually-hidden">: bright white glossy tiles</span><svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg>
+              </a>
+            </div>
+          </article>
+
+          <article class="swatch-card swatch-card--wide" data-tags="simple wall outdoor">
+            <div class="swatch-card__media">
+              <picture class="swatch-card__photo">
+                <source media="(max-width: 699px)" type="image/avif" sizes="78vw" width="720" height="900"
+                        srcset="assets/img/looks/split-brick-m-360.avif 360w, assets/img/looks/split-brick-m-540.avif 540w, assets/img/looks/split-brick-m-720.avif 720w">
+                <source media="(max-width: 699px)" srcset="assets/img/looks/split-brick-m-540.jpg" width="540" height="675">
+                <source type="image/avif" sizes="(min-width: 1281px) 792px, 64vw" width="1000" height="600"
+                        srcset="assets/img/looks/split-brick-640.avif 640w, assets/img/looks/split-brick-1000.avif 1000w">
+                <img src="assets/img/looks/split-brick-1000.jpg" alt="Courtyard with a high wall clad in brick-look tiles in charcoal, rust-brown and cream, a long planter with cacti and palms, and a rattan chair" width="1000" height="600" loading="lazy" decoding="async">
+              </picture>
+              <picture class="swatch-card__face">
+                <source type="image/avif" srcset="assets/img/faces/split-brick-128.avif">
+                <img src="assets/img/faces/split-brick-128.jpg" alt="" width="128" height="128" loading="lazy" decoding="async">
+              </picture>
+            </div>
+            <div class="swatch-card__body">
+              <p class="swatch-card__look">Simple</p>
+              <h3>Brick-look wall</h3>
+              <p class="swatch-card__size">300&nbsp;×&nbsp;600&nbsp;mm (12&nbsp;×&nbsp;24″) · deep-punch glazed</p>
+              <p>Brick-look wall tile in charcoal, rust-brown and cream with a deep-punch textured surface, for courtyards and outside walls.</p>
+              <ul class="tags" aria-label="Suitable for"><li>Wall</li><li>Outdoor</li></ul>
+              <a class="link-arrow" href="https://wa.me/923059252437" target="_blank" rel="noopener"
+                 data-wa="Assalam o Alaikum! I'm interested in brick-look wall tiles (300 × 600 mm / 12 × 24″, design TM36020). Please share the price and availability.">
+                Ask for designs &amp; prices<span class="visually-hidden">: brick-look wall tiles</span><svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg>
+              </a>
+            </div>
+          </article>
+
+          <article class="swatch-card" data-tags="classic floor kitchen">
+            <div class="swatch-card__media">
+              <picture class="swatch-card__photo">
+                <source type="image/avif" sizes="(min-width: 1281px) 384px, (min-width: 700px) 31vw, 78vw"
+                        srcset="assets/img/looks/walnut-plank-360.avif 360w, assets/img/looks/walnut-plank-540.avif 540w, assets/img/looks/walnut-plank-720.avif 720w">
+                <img src="assets/img/looks/walnut-plank-540.jpg" alt="Dining corner with a wooden table and spindle-back chairs on a mirror-glossy dark walnut wood-look plank floor" width="540" height="675" loading="lazy" decoding="async">
+              </picture>
+              <picture class="swatch-card__face">
+                <source type="image/avif" srcset="assets/img/faces/walnut-plank-128.avif">
+                <img src="assets/img/faces/walnut-plank-128.jpg" alt="" width="128" height="128" loading="lazy" decoding="async">
+              </picture>
+            </div>
+            <div class="swatch-card__body">
+              <p class="swatch-card__look">Classic</p>
+              <h3>Walnut wood-look plank</h3>
+              <p class="swatch-card__size">200&nbsp;×&nbsp;1200&nbsp;mm (8&nbsp;×&nbsp;48″) · glossy</p>
+              <p>Dark walnut-brown wood-look planks in glaze-polished porcelain with a high-gloss shine, shown on a kitchen-dining floor.</p>
+              <ul class="tags" aria-label="Suitable for"><li>Floor</li><li>Kitchen</li></ul>
+              <a class="link-arrow" href="https://wa.me/923059252437" target="_blank" rel="noopener"
+                 data-wa="Assalam o Alaikum! I'm interested in walnut wood-look plank tiles (200 × 1200 mm / 8 × 48″, design L21208). Please share the price and availability.">
+                Ask for designs &amp; prices<span class="visually-hidden">: walnut wood-look plank tiles</span><svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg>
+              </a>
+            </div>
+          </article>
+
+          <article class="swatch-card" data-tags="luxury floor living">
+            <div class="swatch-card__media">
+              <picture class="swatch-card__photo">
+                <source type="image/avif" sizes="(min-width: 1281px) 384px, (min-width: 700px) 31vw, 78vw"
+                        srcset="assets/img/looks/navy-gold-360.avif 360w, assets/img/looks/navy-gold-540.avif 540w, assets/img/looks/navy-gold-720.avif 720w">
+                <img src="assets/img/looks/navy-gold-540.jpg" alt="Living room with a dark sofa, a yellow cushion and a white oval coffee table on a glossy floor of white tiles with bold navy-blue swirls and gold veins" width="540" height="675" loading="lazy" decoding="async">
+              </picture>
+              <picture class="swatch-card__face">
+                <source type="image/avif" srcset="assets/img/faces/navy-gold-128.avif">
+                <img src="assets/img/faces/navy-gold-128.jpg" alt="" width="128" height="128" loading="lazy" decoding="async">
+              </picture>
+            </div>
+            <div class="swatch-card__body">
+              <p class="swatch-card__look">Luxury</p>
+              <h3>Navy &amp; gold swirl</h3>
+              <p class="swatch-card__size">600&nbsp;×&nbsp;600&nbsp;mm (24&nbsp;×&nbsp;24″) · glaze polished porcelain</p>
+              <p>Glossy white tile with bold navy-blue swirls and gold veins; two matching faces join into one flowing pattern.</p>
+              <ul class="tags" aria-label="Suitable for"><li>Floor</li><li>Living &amp; office</li></ul>
+              <a class="link-arrow" href="https://wa.me/923059252437" target="_blank" rel="noopener"
+                 data-wa="Assalam o Alaikum! I'm interested in navy &amp; gold swirl tiles (600 × 600 mm / 24 × 24″, design L62113). Please share the price and availability.">
+                Ask for designs &amp; prices<span class="visually-hidden">: navy &amp; gold swirl tiles</span><svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg>
+              </a>
+            </div>
+          </article>
+
+          <article class="swatch-card" data-tags="classic floor kitchen living">
+            <div class="swatch-card__media">
+              <picture class="swatch-card__photo">
+                <source type="image/avif" sizes="(min-width: 1281px) 384px, (min-width: 700px) 31vw, 78vw"
+                        srcset="assets/img/looks/kitchen-gold-crackle-360.avif 360w, assets/img/looks/kitchen-gold-crackle-430.avif 430w">
+                <img src="assets/img/looks/kitchen-gold-crackle-430.jpg" alt="Open kitchen and dining room with dark wood cabinets, a white island and a round table with brown chairs, on a glossy white floor tile with gold crackle veins" width="430" height="538" loading="lazy" decoding="async">
+              </picture>
+            </div>
+            <div class="swatch-card__body">
+              <p class="swatch-card__look">Classic</p>
+              <h3>White marble, gold crackle</h3>
+              <p class="swatch-card__size">600&nbsp;×&nbsp;1200&nbsp;mm (24&nbsp;×&nbsp;48″)</p>
+              <p>White marble look with fine gold veins in a crackle pattern and soft grey patches, on an open kitchen-dining floor.</p>
+              <ul class="tags" aria-label="Suitable for"><li>Floor</li><li>Kitchen</li><li>Living &amp; office</li></ul>
+              <a class="link-arrow" href="https://wa.me/923059252437" target="_blank" rel="noopener"
+                 data-wa="Assalam o Alaikum! I'm interested in white marble-look tiles with gold crackle veins (600 × 1200 mm / 24 × 48″, design 612GY046). Please share the price and availability.">
+                Ask for designs &amp; prices<span class="visually-hidden">: white marble-look tiles with gold crackle veins</span><svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg>
+              </a>
+            </div>
+          </article>
+
+          <article class="swatch-card" data-tags="simple floor wall living">
+            <div class="swatch-card__media">
+              <picture class="swatch-card__photo">
+                <source type="image/avif" sizes="(min-width: 1281px) 384px, (min-width: 700px) 31vw, 78vw"
+                        srcset="assets/img/looks/matt-concrete-360.avif 360w, assets/img/looks/matt-concrete-540.avif 540w, assets/img/looks/matt-concrete-720.avif 720w">
+                <img src="assets/img/looks/matt-concrete-540.jpg" alt="Lounge with grey concrete-look matt tiles on the floor and wall, recessed light strips, velvet chairs and a black marble table" width="540" height="675" loading="lazy" decoding="async">
+              </picture>
+              <picture class="swatch-card__face">
+                <source type="image/avif" srcset="assets/img/faces/matt-concrete-128.avif">
+                <img src="assets/img/faces/matt-concrete-128.jpg" alt="" width="128" height="128" loading="lazy" decoding="async">
+              </picture>
+            </div>
+            <div class="swatch-card__body">
+              <p class="swatch-card__look">Simple</p>
+              <h3>Matt concrete-look</h3>
+              <p class="swatch-card__size">600&nbsp;×&nbsp;1200&nbsp;mm (24&nbsp;×&nbsp;48″)</p>
+              <p>Grey concrete-look tile with a slip-resistant velvet matt finish, for floors and walls in living spaces.</p>
+              <ul class="tags" aria-label="Suitable for"><li>Floor</li><li>Wall</li><li>Living &amp; office</li></ul>
+              <a class="link-arrow" href="https://wa.me/923059252437" target="_blank" rel="noopener"
+                 data-wa="Assalam o Alaikum! I'm interested in matt concrete-look tiles (600 × 1200 mm, design 612GG510M). Please share the price and availability.">
+                Ask for designs &amp; prices<span class="visually-hidden">: matt concrete-look tiles</span><svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg>
+              </a>
+            </div>
+          </article>
+
+          <article class="swatch-card" data-tags="luxury floor living">
+            <div class="swatch-card__media">
+              <picture class="swatch-card__photo">
+                <source type="image/avif" sizes="(min-width: 1281px) 384px, (min-width: 700px) 31vw, 78vw"
+                        srcset="assets/img/looks/black-crackle-360.avif 360w, assets/img/looks/black-crackle-432.avif 432w">
+                <img src="assets/img/looks/black-crackle-432.jpg" alt="Top-down view of a dining room with a pale wood table and navy curved chairs on a glossy jet-black floor tile with fine gold and white veins" width="432" height="540" loading="lazy" decoding="async">
+              </picture>
+            </div>
+            <div class="swatch-card__body">
+              <p class="swatch-card__look">Luxury</p>
+              <h3>Jet black &amp; gold</h3>
+              <p class="swatch-card__size">600&nbsp;×&nbsp;1200&nbsp;mm (24&nbsp;×&nbsp;48″)</p>
+              <p>Glossy jet-black marble look with fine gold and white veins, shown on a dining room floor.</p>
+              <ul class="tags" aria-label="Suitable for"><li>Floor</li><li>Living &amp; office</li></ul>
+              <a class="link-arrow" href="https://wa.me/923059252437" target="_blank" rel="noopener"
+                 data-wa="Assalam o Alaikum! I'm interested in jet black &amp; gold tiles (600 × 1200 mm / 24 × 48″, design 612QS041H). Please share the price and availability.">
+                Ask for designs &amp; prices<span class="visually-hidden">: jet black &amp; gold tiles</span><svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg>
+              </a>
+            </div>
+          </article>
+
+          <article class="swatch-card" data-tags="simple wall outdoor">
+            <div class="swatch-card__media">
+              <picture class="swatch-card__photo">
+                <source type="image/avif" sizes="(min-width: 1281px) 384px, (min-width: 700px) 31vw, 78vw"
+                        srcset="assets/img/looks/ledge-stone-360.avif 360w, assets/img/looks/ledge-stone-540.avif 540w, assets/img/looks/ledge-stone-720.avif 720w">
+                <img src="assets/img/looks/ledge-stone-540.jpg" alt="Shop front with black-framed glass doors and a wall lantern, the wall around them clad in stacked stone-look tiles in grey, beige and tan" width="540" height="675" loading="lazy" decoding="async">
+              </picture>
+              <picture class="swatch-card__face">
+                <source type="image/avif" srcset="assets/img/faces/ledge-stone-128.avif">
+                <img src="assets/img/faces/ledge-stone-128.jpg" alt="" width="128" height="128" loading="lazy" decoding="async">
+              </picture>
+            </div>
+            <div class="swatch-card__body">
+              <p class="swatch-card__look">Simple</p>
+              <h3>Stacked stone wall</h3>
+              <p class="swatch-card__size">300&nbsp;×&nbsp;600&nbsp;mm (12&nbsp;×&nbsp;24″) · deep-punch glazed</p>
+              <p>Rough stacked-stone strips in grey, beige and tan with a deep-punch surface, for shop fronts and outside walls.</p>
+              <ul class="tags" aria-label="Suitable for"><li>Wall</li><li>Outdoor</li></ul>
+              <a class="link-arrow" href="https://wa.me/923059252437" target="_blank" rel="noopener"
+                 data-wa="Assalam o Alaikum! I'm interested in stacked stone wall tiles (300 × 600 mm / 12 × 24″, design TM36023). Please share the price and availability.">
+                Ask for designs &amp; prices<span class="visually-hidden">: stacked stone wall tiles</span><svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg>
+              </a>
+            </div>
+          </article>
+
+          <article class="swatch-card" data-tags="luxury wall bathroom">
+            <div class="swatch-card__media">
+              <picture class="swatch-card__photo">
+                <source type="image/avif" sizes="(min-width: 1281px) 384px, (min-width: 700px) 31vw, 78vw"
+                        srcset="assets/img/looks/gold-borders-360.avif 360w, assets/img/looks/gold-borders-540.avif 540w, assets/img/looks/gold-borders-720.avif 720w">
+                <img src="assets/img/looks/gold-borders-540.jpg" alt="Bathroom with deep green wall tiles banded by two black-and-gold ornamental border strips, beside a glass shower with gold fittings." width="540" height="675" loading="lazy" decoding="async">
+              </picture>
+            </div>
+            <div class="swatch-card__body">
+              <p class="swatch-card__look">Luxury</p>
+              <h3>Black &amp; gold borders</h3>
+              <p class="swatch-card__size">120&nbsp;×&nbsp;600&nbsp;mm</p>
+              <p>Black border strip with a gold medallion pattern in polished porcelain, to band bathroom and feature walls.</p>
+              <ul class="tags" aria-label="Suitable for"><li>Wall</li><li>Bathroom</li></ul>
+              <a class="link-arrow" href="https://wa.me/923059252437" target="_blank" rel="noopener"
+                 data-wa="Assalam o Alaikum! I'm interested in black &amp; gold border tiles (120 × 600 mm, design KJ008B). Please share the price and availability.">
+                Ask for designs &amp; prices<span class="visually-hidden">: black &amp; gold border tiles</span><svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg>
+              </a>
+            </div>
+          </article>
+        </div>
+
+        <p class="gallery-note reveal">Room scenes are catalogue images from our suppliers. Visit the showroom to see the actual tiles.</p>
+
+        <div class="collections__note reveal">
+          <p>Looking for something specific? Send us a photo of the look you want and we'll show you the closest designs we have.</p>
+          <a class="btn btn--wa" href="https://wa.me/923059252437" target="_blank" rel="noopener" data-hide-fab
+             data-wa="Assalam o Alaikum! I'm looking for a specific tile design. I'll send you a photo.">
+            <svg class="icon" aria-hidden="true"><use href="#i-wa"/></svg>Send us a photo
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Products -->
+    <section class="section section--mist products" id="products" aria-labelledby="products-title">
+      <div class="container">
         <div class="section-head reveal">
           <p class="eyebrow">What we offer</p>
           <h2 id="products-title">Everything for your floors, walls and bathrooms</h2>
@@ -308,8 +773,14 @@
         </div>
 
         <div class="products__grid">
-          <article class="product-card reveal">
-            <div class="product-card__media"><img src="assets/img/products/tile-kitchen-wall.jpg" alt="Kitchen with white-and-gold marble-look wall and floor tiles" width="1000" height="761" loading="lazy"></div>
+          <article class="product-card product-card--lead reveal">
+            <div class="product-card__media">
+              <picture>
+                <source type="image/avif" sizes="(min-width: 961px) 50vw, 100vw"
+                        srcset="assets/img/products/tiles-lead-640.avif 640w, assets/img/products/tiles-lead-1000.avif 1000w">
+                <img src="assets/img/products/tiles-lead-800.jpg" alt="Living room with glass doors, a grey rug and a white side table on a glossy floor of white tiles with bold black and gold flowing veins" width="800" height="600" loading="lazy" decoding="async">
+              </picture>
+            </div>
             <h3>Tiles</h3>
             <p>Porcelain and ceramic tiles for every room, including imported designs.</p>
             <ul class="checklist">
@@ -318,11 +789,17 @@
               <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg>Living room, bedroom &amp; office</li>
               <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg>Outdoor &amp; decorative tiles</li>
             </ul>
-            <a class="link-arrow" href="#collections">Browse tile styles<svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+            <a class="link-arrow" href="#calculator">Work out how many boxes<svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a>
           </article>
 
-          <article class="product-card reveal reveal-d1">
-            <div class="product-card__media"><img class="focus-top" src="assets/img/sanitary/real-gold-basin.jpg" alt="Gold vessel wash basin with matching gold tap in our showroom" width="1080" height="1079" loading="lazy"></div>
+          <article class="product-card product-card--side reveal reveal-d1">
+            <div class="product-card__media">
+              <picture>
+                <source type="image/avif" sizes="(min-width: 961px) 24vw, (min-width: 641px) 47vw, 42vw"
+                        srcset="assets/img/sanitary/real-gold-basin-480.avif 480w, assets/img/sanitary/real-gold-basin-864.avif 864w">
+                <img src="assets/img/sanitary/real-gold-basin-640.jpg" alt="Gold vessel wash basin with matching gold tap in our showroom" width="640" height="800" loading="lazy" decoding="async">
+              </picture>
+            </div>
             <h3>Sanitary ware</h3>
             <p>Complete bathroom solutions, chosen to go with your tiles.</p>
             <ul class="checklist">
@@ -334,8 +811,14 @@
             <a class="link-arrow" href="#sanitary">See sanitary ware<svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a>
           </article>
 
-          <article class="product-card reveal reveal-d2">
-            <div class="product-card__media"><img class="focus-top" src="assets/img/sanitary/real-chrome-tap.jpg" alt="Chrome pull-down mixer on a black designer basin in our showroom" width="1080" height="1080" loading="lazy"></div>
+          <article class="product-card product-card--side reveal reveal-d2">
+            <div class="product-card__media">
+              <picture>
+                <source type="image/avif" sizes="(min-width: 961px) 24vw, (min-width: 641px) 47vw, 42vw"
+                        srcset="assets/img/sanitary/real-chrome-tap-480.avif 480w, assets/img/sanitary/real-chrome-tap-864.avif 864w">
+                <img src="assets/img/sanitary/real-chrome-tap-640.jpg" alt="Chrome pull-down mixer on a black designer basin in our showroom" width="640" height="800" loading="lazy" decoding="async">
+              </picture>
+            </div>
             <h3>Bathroom fittings</h3>
             <p>The finishing touches that make a bathroom and kitchen work well and look right.</p>
             <ul class="checklist">
@@ -353,158 +836,6 @@
       </div>
     </section>
 
-    <!-- Tile styles -->
-    <section class="section section--mist" id="collections" aria-labelledby="collections-title">
-      <div class="container">
-        <div class="section-head reveal">
-          <p class="eyebrow">Tile styles</p>
-          <h2 id="collections-title">Find the look you love</h2>
-          <p>A selection from our current range. New designs arrive often, so message us for the newest arrivals, sizes and prices.</p>
-        </div>
-
-        <div class="filters reveal" role="group" aria-label="Filter tile styles by room or use">
-          <button class="chip" type="button" data-filter="all" aria-pressed="true">All styles</button>
-          <button class="chip" type="button" data-filter="floor" aria-pressed="false">Floor</button>
-          <button class="chip" type="button" data-filter="wall" aria-pressed="false">Wall</button>
-          <button class="chip" type="button" data-filter="bathroom" aria-pressed="false">Bathroom</button>
-          <button class="chip" type="button" data-filter="kitchen" aria-pressed="false">Kitchen</button>
-          <button class="chip" type="button" data-filter="living" aria-pressed="false">Living &amp; office</button>
-          <button class="chip" type="button" data-filter="outdoor" aria-pressed="false">Outdoor</button>
-        </div>
-        <p class="visually-hidden" id="filter-status" aria-live="polite"></p>
-
-        <div class="swatch-grid">
-          <article class="swatch-card reveal" data-tags="floor wall bathroom kitchen living">
-            <div class="swatch-card__media"><img src="assets/img/products/tile-white-marble.jpg" alt="Three white marble-look 600 × 1200 mm tiles with soft grey veining" width="847" height="600" loading="lazy"></div>
-            <div class="swatch-card__body">
-              <h3>White marble-look</h3>
-              <p>Classic white with soft grey veining. 600&nbsp;×&nbsp;1200&nbsp;mm.</p>
-              <ul class="tags" aria-label="Suitable for"><li>Floor</li><li>Wall</li><li>Bathroom</li><li>Kitchen</li><li>Living &amp; office</li></ul>
-              <a class="link-arrow" href="https://wa.me/923059252437" target="_blank" rel="noopener" data-wa="Assalam o Alaikum! I'm interested in white marble-look tiles (600 x 1200 mm). Please share designs and prices.">Ask for designs &amp; prices<span class="visually-hidden">: white marble-look tiles</span><svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a>
-            </div>
-          </article>
-
-          <article class="swatch-card reveal reveal-d1" data-tags="floor wall living">
-            <div class="swatch-card__media"><img src="assets/img/products/tile-grey-marble.jpg" alt="Three grey marble-look 600 × 1200 mm tiles" width="847" height="600" loading="lazy"></div>
-            <div class="swatch-card__body">
-              <h3>Grey marble-look</h3>
-              <p>Soft grey veining for calm, modern floors and walls. 600&nbsp;×&nbsp;1200&nbsp;mm.</p>
-              <ul class="tags" aria-label="Suitable for"><li>Floor</li><li>Wall</li><li>Living &amp; office</li></ul>
-              <a class="link-arrow" href="https://wa.me/923059252437" target="_blank" rel="noopener" data-wa="Assalam o Alaikum! I'm interested in grey marble-look tiles (600 x 1200 mm). Please share designs and prices.">Ask for designs &amp; prices<span class="visually-hidden">: grey marble-look tiles</span><svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a>
-            </div>
-          </article>
-
-          <article class="swatch-card reveal reveal-d2" data-tags="floor wall living">
-            <div class="swatch-card__media"><img src="assets/img/products/tile-black-gold-marble.jpg" alt="Three black marble-look 600 × 1200 mm tiles with gold veining" width="847" height="600" loading="lazy"></div>
-            <div class="swatch-card__body">
-              <h3>Black &amp; gold marble-look</h3>
-              <p>Deep black with gold veining for feature walls, lounges and entrances. 600&nbsp;×&nbsp;1200&nbsp;mm.</p>
-              <ul class="tags" aria-label="Suitable for"><li>Floor</li><li>Wall</li><li>Living &amp; office</li></ul>
-              <a class="link-arrow" href="https://wa.me/923059252437" target="_blank" rel="noopener" data-wa="Assalam o Alaikum! I'm interested in black and gold marble-look tiles (600 x 1200 mm). Please share designs and prices.">Ask for designs &amp; prices<span class="visually-hidden">: black and gold marble-look tiles</span><svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a>
-            </div>
-          </article>
-
-          <article class="swatch-card reveal" data-tags="floor wall living">
-            <div class="swatch-card__media"><img src="assets/img/products/tile-blue-marble-slab.jpg" alt="Blue marble-look tile on display in our showroom" width="900" height="675" loading="lazy"></div>
-            <div class="swatch-card__body">
-              <h3>Blue marble-look</h3>
-              <p>A bold, deep-blue tile, photographed on display in our showroom. 600&nbsp;×&nbsp;600&nbsp;mm.</p>
-              <ul class="tags" aria-label="Suitable for"><li>Floor</li><li>Wall</li><li>Living &amp; office</li></ul>
-              <a class="link-arrow" href="https://wa.me/923059252437" target="_blank" rel="noopener" data-wa="Assalam o Alaikum! I'm interested in the blue marble-look tile (600 x 600 mm) from your website. Please share the price.">Ask for designs &amp; prices<span class="visually-hidden">: blue marble-look tiles</span><svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a>
-            </div>
-          </article>
-
-          <article class="swatch-card reveal reveal-d1" data-tags="floor living">
-            <div class="swatch-card__media"><img src="assets/img/products/tile-wood-plank.jpg" alt="Dark wood-look plank tiles in a dining room" width="955" height="712" loading="lazy"></div>
-            <div class="swatch-card__body">
-              <h3>Wood-look planks</h3>
-              <p>The warm look of timber in glossy glazed porcelain. 200&nbsp;×&nbsp;1200&nbsp;mm.</p>
-              <ul class="tags" aria-label="Suitable for"><li>Floor</li><li>Living &amp; office</li></ul>
-              <a class="link-arrow" href="https://wa.me/923059252437" target="_blank" rel="noopener" data-wa="Assalam o Alaikum! I'm interested in wood-look plank tiles (200 x 1200 mm). Please share designs and prices.">Ask for designs &amp; prices<span class="visually-hidden">: wood-look plank tiles</span><svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a>
-            </div>
-          </article>
-
-          <article class="swatch-card reveal reveal-d2" data-tags="floor living">
-            <div class="swatch-card__media"><img src="assets/img/products/tile-matt-living.jpg" alt="Living room with light grey matt floor tiles" width="483" height="362" loading="lazy"></div>
-            <div class="swatch-card__body">
-              <h3>Matt series</h3>
-              <p>Soft, non-glossy finish for living rooms and bedrooms. 600&nbsp;×&nbsp;600&nbsp;mm.</p>
-              <ul class="tags" aria-label="Suitable for"><li>Floor</li><li>Living &amp; office</li></ul>
-              <a class="link-arrow" href="https://wa.me/923059252437" target="_blank" rel="noopener" data-wa="Assalam o Alaikum! I'm interested in Matt Series floor tiles (600 x 600 mm). Please share designs and prices.">Ask for designs &amp; prices<span class="visually-hidden">: matt series tiles</span><svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a>
-            </div>
-          </article>
-
-          <article class="swatch-card reveal" data-tags="floor living">
-            <div class="swatch-card__media"><img src="assets/img/products/tile-office.jpg" alt="Café interior with a patterned grey matt tile floor" width="477" height="358" loading="lazy"></div>
-            <div class="swatch-card__body">
-              <h3>Office &amp; commercial</h3>
-              <p>Matt tiles laid in patterns for offices, shops and cafés. 600&nbsp;×&nbsp;600&nbsp;mm.</p>
-              <ul class="tags" aria-label="Suitable for"><li>Floor</li><li>Living &amp; office</li></ul>
-              <a class="link-arrow" href="https://wa.me/923059252437" target="_blank" rel="noopener" data-wa="Assalam o Alaikum! I need tiles (600 x 600 mm) for an office / commercial space. Please share designs and prices.">Ask for designs &amp; prices<span class="visually-hidden">: office and commercial tiles</span><svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a>
-            </div>
-          </article>
-
-          <article class="swatch-card reveal reveal-d1" data-tags="floor outdoor">
-            <div class="swatch-card__media"><img src="assets/img/products/tile-outdoor.jpg" alt="Outdoor patio with grey and patterned matt tiles" width="487" height="362" loading="lazy"></div>
-            <div class="swatch-card__body">
-              <h3>Outdoor tiles</h3>
-              <p>Matt tiles for porches and patios. 600&nbsp;×&nbsp;600&nbsp;mm. Ask us which designs suit parking and which are anti-skid.</p>
-              <ul class="tags" aria-label="Suitable for"><li>Floor</li><li>Outdoor</li></ul>
-              <a class="link-arrow" href="https://wa.me/923059252437" target="_blank" rel="noopener" data-wa="Assalam o Alaikum! I need outdoor tiles (600 x 600 mm). Please share designs and prices, and which suit parking or are anti-skid.">Ask for designs &amp; prices<span class="visually-hidden">: outdoor tiles</span><svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a>
-            </div>
-          </article>
-
-          <article class="swatch-card reveal reveal-d2" data-tags="wall kitchen">
-            <div class="swatch-card__media"><img src="assets/img/products/tile-kitchen-wall.jpg" alt="Kitchen with white-and-gold marble-look wall tiles" width="1000" height="761" loading="lazy"></div>
-            <div class="swatch-card__body">
-              <h3>Kitchen wall tiles</h3>
-              <p>Marble-look wall tiles for kitchens and backsplashes. 400&nbsp;×&nbsp;800&nbsp;mm.</p>
-              <ul class="tags" aria-label="Suitable for"><li>Wall</li><li>Kitchen</li></ul>
-              <a class="link-arrow" href="https://wa.me/923059252437" target="_blank" rel="noopener" data-wa="Assalam o Alaikum! I'm interested in kitchen wall tiles (400 x 800 mm). Please share designs and prices.">Ask for designs &amp; prices<span class="visually-hidden">: kitchen wall tiles</span><svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a>
-            </div>
-          </article>
-
-          <article class="swatch-card reveal" data-tags="wall floor bathroom">
-            <div class="swatch-card__media"><img src="assets/img/products/tile-bathroom-marble.jpg" alt="Bathroom with dark marble-look wall and floor tiles" width="755" height="575" loading="lazy"></div>
-            <div class="swatch-card__body">
-              <h3>Bathroom tiles</h3>
-              <p>Dramatic marble-look wall and floor tiles for a luxury bathroom. 400&nbsp;×&nbsp;800&nbsp;mm.</p>
-              <ul class="tags" aria-label="Suitable for"><li>Wall</li><li>Floor</li><li>Bathroom</li></ul>
-              <a class="link-arrow" href="https://wa.me/923059252437" target="_blank" rel="noopener" data-wa="Assalam o Alaikum! I'm interested in bathroom tiles (400 x 800 mm). Please share designs and prices.">Ask for designs &amp; prices<span class="visually-hidden">: bathroom tiles</span><svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a>
-            </div>
-          </article>
-
-          <article class="swatch-card reveal reveal-d1" data-tags="wall outdoor">
-            <div class="swatch-card__media"><img src="assets/img/products/tile-elevation.jpg" alt="House front finished with stone-look elevation wall tiles" width="1000" height="750" loading="lazy"></div>
-            <div class="swatch-card__body">
-              <h3>Elevation &amp; stone-look</h3>
-              <p>Natural stone look for house fronts, boundary walls and feature walls. 300&nbsp;×&nbsp;600&nbsp;mm.</p>
-              <ul class="tags" aria-label="Suitable for"><li>Wall</li><li>Outdoor</li></ul>
-              <a class="link-arrow" href="https://wa.me/923059252437" target="_blank" rel="noopener" data-wa="Assalam o Alaikum! I'm interested in elevation / stone-look wall tiles (300 x 600 mm). Please share designs and prices.">Ask for designs &amp; prices<span class="visually-hidden">: elevation and stone-look tiles</span><svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a>
-            </div>
-          </article>
-
-          <article class="swatch-card reveal reveal-d2" data-tags="floor bathroom kitchen">
-            <div class="swatch-card__media"><img src="assets/img/products/tile-patterned.jpg" alt="Patterned star-motif floor tile on display in our showroom" width="1000" height="750" loading="lazy"></div>
-            <div class="swatch-card__body">
-              <h3>Patterned tiles</h3>
-              <p>Decorative motifs that make a statement, photographed in our showroom.</p>
-              <ul class="tags" aria-label="Suitable for"><li>Floor</li><li>Bathroom</li><li>Kitchen</li></ul>
-              <a class="link-arrow" href="https://wa.me/923059252437" target="_blank" rel="noopener" data-wa="Assalam o Alaikum! I'm interested in patterned / decorative tiles. Please share designs, sizes and prices.">Ask for designs &amp; prices<span class="visually-hidden">: patterned tiles</span><svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a>
-            </div>
-          </article>
-        </div>
-
-        <div class="collections__note reveal">
-          <p>Looking for something specific? Send us a photo of the look you want and we'll show you the closest designs we have.</p>
-          <a class="btn btn--dark" href="https://wa.me/923059252437" target="_blank" rel="noopener" data-hide-fab
-             data-wa="Assalam o Alaikum! I'm looking for a specific tile design. I'll send you a photo.">
-            <svg class="icon" aria-hidden="true"><use href="#i-wa"/></svg>Send us a photo
-          </a>
-        </div>
-      </div>
-    </section>
-
     <!-- Sanitary ware & fittings -->
     <section class="section" id="sanitary" aria-labelledby="sanitary-title">
       <div class="container">
@@ -514,52 +845,131 @@
           <p>Wash basins, vanity sets, commodes, mirrors, cabinets, faucets and shower sets: everything to finish a bathroom in one visit.</p>
         </div>
 
+        <!-- The two real showroom photos, staggered. Same 4:5 files as the product cards, so phones download them once. -->
         <div class="san-feature">
           <figure class="photo-card reveal">
-            <img class="focus-top" src="assets/img/sanitary/real-gold-basin.jpg" alt="Gold vessel wash basin with a matching gold tap" width="1080" height="1079" loading="lazy">
+            <picture>
+              <source type="image/avif" sizes="(min-width: 641px) 50vw, 47vw"
+                      srcset="assets/img/sanitary/real-gold-basin-480.avif 480w, assets/img/sanitary/real-gold-basin-864.avif 864w">
+              <img src="assets/img/sanitary/real-gold-basin-640.jpg" alt="Gold vessel wash basin with a matching gold tap" width="640" height="800" loading="lazy" decoding="async">
+            </picture>
             <figcaption><strong>Gold basin &amp; tap</strong><span>On display in our showroom</span></figcaption>
           </figure>
           <figure class="photo-card reveal reveal-d1">
-            <img class="focus-top" src="assets/img/sanitary/real-chrome-tap.jpg" alt="Chrome pull-down mixer on a black designer wash basin" width="1080" height="1080" loading="lazy">
+            <picture>
+              <source type="image/avif" sizes="(min-width: 641px) 42vw, 47vw"
+                      srcset="assets/img/sanitary/real-chrome-tap-480.avif 480w, assets/img/sanitary/real-chrome-tap-864.avif 864w">
+              <img src="assets/img/sanitary/real-chrome-tap-640.jpg" alt="Chrome pull-down mixer on a black designer wash basin" width="640" height="800" loading="lazy" decoding="async">
+            </picture>
             <figcaption><strong>Designer basin &amp; pull-down mixer</strong><span>On display in our showroom</span></figcaption>
           </figure>
         </div>
 
         <h3 class="subhead reveal">Commodes, basins &amp; vanities</h3>
         <div class="san-grid">
-          <figure class="photo-card photo-card--light reveal">
-            <img src="assets/img/sanitary/ai-commode-onepiece.jpg" alt="Illustration: white one-piece ceramic commode" width="600" height="600" loading="lazy">
-            <figcaption><strong>One-piece commodes</strong><span class="badge">Illustration</span></figcaption>
+          <figure class="photo-card photo-card--product reveal">
+            <picture>
+              <source type="image/avif" srcset="assets/img/sanitary/commode-op-4.avif">
+              <img src="assets/img/sanitary/commode-op-4.jpg" alt="White one-piece commode with a square tank and seat, Master model OP-4" width="175" height="242" loading="lazy" decoding="async">
+            </picture>
+            <figcaption>
+              <strong>One-piece commode</strong><span>Master · model <span class="nw">OP-4</span></span>
+              <a class="link-arrow" href="https://wa.me/923059252437" target="_blank" rel="noopener" data-wa="Assalam o Alaikum! Please share the price of the Master OP-4 one-piece commode.">Ask for price<span class="visually-hidden">: one-piece commode Master OP-4</span><svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+            </figcaption>
           </figure>
-          <figure class="photo-card photo-card--light reveal reveal-d1">
-            <img src="assets/img/sanitary/ai-commode-wallhung.jpg" alt="Illustration: white wall-hung ceramic commode with chrome flush plate" width="600" height="600" loading="lazy">
-            <figcaption><strong>Wall-hung toilets</strong><span class="badge">Illustration</span></figcaption>
+          <figure class="photo-card photo-card--product reveal reveal-d1">
+            <picture>
+              <source type="image/avif" srcset="assets/img/sanitary/commode-op-13.avif">
+              <img src="assets/img/sanitary/commode-op-13.jpg" alt="White one-piece commode with a rounded, sculpted body, Master model OP-13" width="222" height="266" loading="lazy" decoding="async">
+            </picture>
+            <figcaption>
+              <strong>One-piece commode</strong><span>Master · model <span class="nw">OP-13</span></span>
+              <a class="link-arrow" href="https://wa.me/923059252437" target="_blank" rel="noopener" data-wa="Assalam o Alaikum! Please share the price of the Master OP-13 one-piece commode.">Ask for price<span class="visually-hidden">: one-piece commode Master OP-13</span><svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+            </figcaption>
           </figure>
-          <figure class="photo-card photo-card--light reveal reveal-d2">
-            <img src="assets/img/sanitary/ai-basin-vessel.jpg" alt="Illustration: white ceramic vessel wash basin with a chrome mixer" width="600" height="600" loading="lazy">
-            <figcaption><strong>Wash basins</strong><span class="badge">Illustration</span></figcaption>
+          <figure class="photo-card photo-card--product reveal reveal-d2">
+            <picture>
+              <source type="image/avif" srcset="assets/img/sanitary/wall-hung-005.avif">
+              <img src="assets/img/sanitary/wall-hung-005.jpg" alt="White wall-hung commode with a square seat, Dell model 005" width="600" height="447" loading="lazy" decoding="async">
+            </picture>
+            <figcaption>
+              <strong>Wall-hung commode</strong><span>Dell · model <span class="nw">005</span></span>
+              <a class="link-arrow" href="https://wa.me/923059252437" target="_blank" rel="noopener" data-wa="Assalam o Alaikum! Please share the price of the Dell 005 wall-hung commode.">Ask for price<span class="visually-hidden">: wall-hung commode Dell 005</span><svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+            </figcaption>
           </figure>
-          <figure class="photo-card photo-card--light reveal reveal-d3">
-            <img src="assets/img/sanitary/ai-vanity-set.jpg" alt="Illustration: bathroom vanity set with basin, cabinet and LED mirror" width="600" height="600" loading="lazy">
-            <figcaption><strong>Vanity sets &amp; mirrors</strong><span class="badge">Illustration</span></figcaption>
+          <figure class="photo-card photo-card--product reveal reveal-d3">
+            <picture>
+              <source type="image/avif" srcset="assets/img/sanitary/wall-hung-07.avif">
+              <img src="assets/img/sanitary/wall-hung-07.jpg" alt="White wall-hung commode with rounded corners, Dell model 07" width="600" height="467" loading="lazy" decoding="async">
+            </picture>
+            <figcaption>
+              <strong>Wall-hung commode</strong><span>Dell · model <span class="nw">07</span></span>
+              <a class="link-arrow" href="https://wa.me/923059252437" target="_blank" rel="noopener" data-wa="Assalam o Alaikum! Please share the price of the Dell 07 wall-hung commode.">Ask for price<span class="visually-hidden">: wall-hung commode Dell 07</span><svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+            </figcaption>
+          </figure>
+          <figure class="photo-card photo-card--product reveal">
+            <picture>
+              <source type="image/avif" srcset="assets/img/sanitary/basin-bp-28.avif">
+              <img src="assets/img/sanitary/basin-bp-28.jpg" alt="White pedestal wash basin with a wide square top and a chrome tap, Master model BP-28" width="196" height="284" loading="lazy" decoding="async">
+            </picture>
+            <figcaption>
+              <strong>Pedestal wash basin</strong><span>Master · model <span class="nw">BP-28</span></span>
+              <a class="link-arrow" href="https://wa.me/923059252437" target="_blank" rel="noopener" data-wa="Assalam o Alaikum! Please share the price of the Master BP-28 pedestal wash basin.">Ask for price<span class="visually-hidden">: pedestal wash basin Master BP-28</span><svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+            </figcaption>
+          </figure>
+          <figure class="photo-card photo-card--product reveal reveal-d1">
+            <picture>
+              <source type="image/avif" srcset="assets/img/sanitary/basin-grace-bp-10.avif">
+              <img src="assets/img/sanitary/basin-grace-bp-10.jpg" alt="White pedestal wash basin with a straight-edged rectangular top, Master model Grace BP-10" width="168" height="241" loading="lazy" decoding="async">
+            </picture>
+            <figcaption>
+              <strong>Pedestal wash basin</strong><span>Master · model <span class="nw">Grace BP-10</span></span>
+              <a class="link-arrow" href="https://wa.me/923059252437" target="_blank" rel="noopener" data-wa="Assalam o Alaikum! Please share the price of the Master Grace BP-10 pedestal wash basin.">Ask for price<span class="visually-hidden">: pedestal wash basin Master Grace BP-10</span><svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+            </figcaption>
+          </figure>
+          <figure class="photo-card photo-card--product reveal reveal-d2">
+            <picture>
+              <source type="image/avif" srcset="assets/img/sanitary/vanity-pearl-v-24.avif">
+              <img src="assets/img/sanitary/vanity-pearl-v-24.jpg" alt="White oval counter-top vanity basin with a black-and-chrome tap, Master model Pearl V-24" width="230" height="165" loading="lazy" decoding="async">
+            </picture>
+            <figcaption>
+              <strong>Vanity basin</strong><span>Master · model <span class="nw">Pearl V-24</span></span>
+              <a class="link-arrow" href="https://wa.me/923059252437" target="_blank" rel="noopener" data-wa="Assalam o Alaikum! Please share the price of the Master Pearl V-24 vanity basin.">Ask for price<span class="visually-hidden">: vanity basin Master Pearl V-24</span><svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+            </figcaption>
+          </figure>
+          <figure class="photo-card photo-card--product reveal reveal-d3">
+            <picture>
+              <source type="image/avif" srcset="assets/img/sanitary/vanity-delta-v-13.avif">
+              <img src="assets/img/sanitary/vanity-delta-v-13.jpg" alt="White square counter-top vanity basin with a chrome tap, Master model Delta V-13" width="200" height="152" loading="lazy" decoding="async">
+            </picture>
+            <figcaption>
+              <strong>Vanity basin</strong><span>Master · model <span class="nw">Delta V-13</span></span>
+              <a class="link-arrow" href="https://wa.me/923059252437" target="_blank" rel="noopener" data-wa="Assalam o Alaikum! Please share the price of the Master Delta V-13 vanity basin.">Ask for price<span class="visually-hidden">: vanity basin Master Delta V-13</span><svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+            </figcaption>
           </figure>
         </div>
-        <p class="san-note reveal">Illustrations show the styles we offer. Visit the showroom to see the actual models, colours and sizes in stock.</p>
+        <p class="san-note reveal">Product photos from the makers, Master and Dell. Visit the showroom to see the full range of models in stock.</p>
 
         <h3 class="subhead reveal">Faucets &amp; shower sets</h3>
         <div class="fittings">
           <figure class="photo-card photo-card--wide photo-card--light reveal">
-            <img src="assets/img/sanitary/fittings-black-gold.jpg" alt="Black-and-gold shower mixer, basin tap and angle valve" width="885" height="296" loading="lazy">
+            <picture>
+              <source type="image/avif" sizes="(min-width: 641px) 50vw, 100vw" srcset="assets/img/sanitary/fittings-black-gold-885.avif 885w">
+              <img src="assets/img/sanitary/fittings-black-gold.jpg" alt="Black-and-gold shower mixer, basin tap and angle valve" width="885" height="296" loading="lazy" decoding="async">
+            </picture>
             <figcaption><strong>Black &amp; gold set</strong><span>Shower mixer, basin tap and angle valve</span></figcaption>
           </figure>
           <figure class="photo-card photo-card--wide photo-card--light reveal reveal-d1">
-            <img src="assets/img/sanitary/fittings-grey.jpg" alt="Grey shower set, basin tap and angle valve" width="885" height="298" loading="lazy">
+            <picture>
+              <source type="image/avif" sizes="(min-width: 641px) 50vw, 100vw" srcset="assets/img/sanitary/fittings-grey-885.avif 885w">
+              <img src="assets/img/sanitary/fittings-grey.jpg" alt="Grey shower set, basin tap and angle valve" width="885" height="298" loading="lazy" decoding="async">
+            </picture>
             <figcaption><strong>Gunmetal grey set</strong><span>Shower set, basin tap and angle valve</span></figcaption>
           </figure>
         </div>
 
         <div class="section-cta reveal">
-          <a class="btn btn--dark" href="https://wa.me/923059252437" target="_blank" rel="noopener" data-hide-fab
+          <a class="btn btn--wa" href="https://wa.me/923059252437" target="_blank" rel="noopener" data-hide-fab
              data-wa="Assalam o Alaikum! I'd like to know about your sanitary ware (commodes, basins, vanity sets, faucets). Please share designs and prices.">
             <svg class="icon" aria-hidden="true"><use href="#i-wa"/></svg>Ask about sanitary ware
           </a>
@@ -567,8 +977,60 @@
       </div>
     </section>
 
+    <!-- Inside the outlet -->
+    <section class="section section--navy section--midnight" id="outlet" aria-labelledby="outlet-title">
+      <div class="container outlet">
+        <div class="outlet__copy">
+          <div class="section-head reveal">
+            <p class="eyebrow eyebrow--light">Inside our outlet</p>
+            <h2 id="outlet-title">Take a look around</h2>
+            <p>A quick walk past our shower and fittings display on Station Road. Come in to see the full range of tiles, sanitary ware and fittings for yourself.</p>
+            <a class="link-arrow link-arrow--light" href="#visit">Plan your visit<svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+          </div>
+          <div class="gallery">
+            <figure class="photo-card reveal">
+              <picture>
+                <source type="image/avif" sizes="(min-width: 961px) 62vw, 100vw"
+                        srcset="assets/img/showroom/showroom-aisle-depth-480.avif 480w, assets/img/showroom/showroom-aisle-depth-855.avif 855w">
+                <img src="assets/img/showroom/showroom-aisle-depth.jpg" alt="View through our glass entrance into the showroom, with tile display racks" width="855" height="481" loading="lazy" decoding="async">
+              </picture>
+              <figcaption><strong>Tile displays</strong><span>Large-format and wall tiles</span></figcaption>
+            </figure>
+            <figure class="photo-card reveal">
+              <picture>
+                <source type="image/avif" sizes="(min-width: 961px) 31vw, (min-width: 481px) 50vw, 100vw"
+                        srcset="assets/img/showroom/showroom-seating-taps-wall-480.avif 480w, assets/img/showroom/showroom-seating-taps-wall-855.avif 855w">
+                <img src="assets/img/showroom/showroom-seating-taps-wall.jpg" alt="Seating area in front of a wall of taps and fittings" width="855" height="481" loading="lazy" decoding="async">
+              </picture>
+              <figcaption><strong>Fittings wall</strong><span>Taps, mixers and shower sets</span></figcaption>
+            </figure>
+            <figure class="photo-card reveal reveal-d1">
+              <picture>
+                <source type="image/avif" sizes="(min-width: 961px) 31vw, (min-width: 481px) 50vw, 100vw"
+                        srcset="assets/img/showroom/showroom-decor-wall-upper-480.avif 480w, assets/img/showroom/showroom-decor-wall-upper-855.avif 855w">
+                <img src="assets/img/showroom/showroom-decor-wall-upper.jpg" alt="Decorative wall tile displays in the showroom" width="855" height="481" loading="lazy" decoding="async">
+              </picture>
+              <figcaption><strong>Decor &amp; wall tiles</strong><span>See the colours in person</span></figcaption>
+            </figure>
+          </div>
+        </div>
+        <!-- Video facade: nothing is downloaded until a tap. Without JavaScript it is a plain link to the mp4. -->
+        <div class="outlet__video reveal">
+          <a class="video-facade" href="assets/video/outlet-fittings.mp4" aria-describedby="outlet-video-desc">
+            <picture>
+              <source type="image/avif" sizes="(min-width: 961px) 340px, 64vw"
+                      srcset="assets/video/outlet-poster-360.avif 360w, assets/video/outlet-poster-480.avif 480w">
+              <img src="assets/video/outlet-poster.jpg" width="480" height="848" alt="" loading="lazy" decoding="async">
+            </picture>
+            <span class="video-facade__play"><svg class="icon" aria-hidden="true"><use href="#i-play"/></svg>Play video <span class="video-facade__meta">33&nbsp;s · 5.6&nbsp;MB</span></span>
+          </a>
+          <p class="visually-hidden" id="outlet-video-desc">A 33-second walk past the shower set and fittings display in our showroom.</p>
+        </div>
+      </div>
+    </section>
+
     <!-- Tile bond & grout -->
-    <section class="section section--mist" id="tile-bond" aria-labelledby="bond-title">
+    <section class="section" id="tile-bond" aria-labelledby="bond-title">
       <div class="container">
         <div class="section-head reveal">
           <p class="eyebrow">Now available</p>
@@ -578,9 +1040,15 @@
         <!-- Optional Canva promo banner (2400 x 888 px). To show it, remove the comment markers around the img tag on the next line. -->
         <!-- <img class="bond-banner" src="assets/img/promo/tile-bond-banner.jpg" alt="Tile bond and grout at Mumtaz Tile Zone" width="2400" height="888"> -->
 
-        <div class="bond-grid">
-          <article class="bond-card reveal">
-            <div class="bond-card__media"><img src="assets/img/promo/glory-tile-bond-20kg.jpg" alt="Glory Tile Bond 20 kg bag" width="807" height="1000" loading="lazy"></div>
+        <div class="bond-grid rail reveal">
+          <article class="bond-card">
+            <div class="bond-card__media">
+              <picture>
+                <source type="image/avif" sizes="(min-width: 961px) 384px, (min-width: 700px) 38vw, 78vw"
+                        srcset="assets/img/promo/glory-tile-bond-20kg-480.avif 480w, assets/img/promo/glory-tile-bond-20kg-807.avif 807w">
+                <img src="assets/img/promo/glory-tile-bond-20kg.jpg" alt="Glory Tile Bond 20 kg bag" width="807" height="1000" loading="lazy" decoding="async">
+              </picture>
+            </div>
             <div class="bond-card__body">
               <h3>Glory Tile Bond</h3>
               <p class="bond-card__lead">High-performance tile &amp; marble adhesive</p>
@@ -593,8 +1061,14 @@
               <a class="link-arrow" href="https://wa.me/923059252437" target="_blank" rel="noopener" data-wa="Assalam o Alaikum! Please share the price of Glory Tile Bond (20 kg). I need it for my tiling job.">Ask for price<span class="visually-hidden">: Glory Tile Bond</span><svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a>
             </div>
           </article>
-          <article class="bond-card reveal reveal-d1">
-            <div class="bond-card__media"><img src="assets/img/promo/oriel-tile-bond-20kg.jpg" alt="Oriel Tile Bond 20 kg bag" width="807" height="1000" loading="lazy"></div>
+          <article class="bond-card">
+            <div class="bond-card__media">
+              <picture>
+                <source type="image/avif" sizes="(min-width: 961px) 384px, (min-width: 700px) 38vw, 78vw"
+                        srcset="assets/img/promo/oriel-tile-bond-20kg-480.avif 480w, assets/img/promo/oriel-tile-bond-20kg-807.avif 807w">
+                <img src="assets/img/promo/oriel-tile-bond-20kg.jpg" alt="Oriel Tile Bond 20 kg bag" width="807" height="1000" loading="lazy" decoding="async">
+              </picture>
+            </div>
             <div class="bond-card__body">
               <h3>Oriel Tile Bond</h3>
               <p class="bond-card__lead">Eco-friendly, easy to work, economical, less waste</p>
@@ -607,8 +1081,14 @@
               <a class="link-arrow" href="https://wa.me/923059252437" target="_blank" rel="noopener" data-wa="Assalam o Alaikum! Please share the price of Oriel Tile Bond (20 kg). I need it for my tiling job.">Ask for price<span class="visually-hidden">: Oriel Tile Bond</span><svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a>
             </div>
           </article>
-          <article class="bond-card reveal reveal-d2">
-            <div class="bond-card__media"><img src="assets/img/promo/ornate-tile-grout-1kg.jpg" alt="Ornate Tile Grout 1 kg pack" width="807" height="1000" loading="lazy"></div>
+          <article class="bond-card">
+            <div class="bond-card__media">
+              <picture>
+                <source type="image/avif" sizes="(min-width: 961px) 384px, (min-width: 700px) 38vw, 78vw"
+                        srcset="assets/img/promo/ornate-tile-grout-1kg-480.avif 480w, assets/img/promo/ornate-tile-grout-1kg-807.avif 807w">
+                <img src="assets/img/promo/ornate-tile-grout-1kg.jpg" alt="Ornate Tile Grout 1 kg pack" width="807" height="1000" loading="lazy" decoding="async">
+              </picture>
+            </div>
             <div class="bond-card__body">
               <h3>Ornate Tile Grout</h3>
               <p class="bond-card__lead">Polymer-modified cementitious tile grout</p>
@@ -796,45 +1276,6 @@
       </div>
     </section>
 
-    <!-- Inside the outlet -->
-    <section class="section" id="outlet" aria-labelledby="outlet-title">
-      <div class="container outlet">
-        <div class="outlet__copy">
-          <div class="section-head reveal">
-            <p class="eyebrow">Inside our outlet</p>
-            <h2 id="outlet-title">Take a look around</h2>
-            <p>A quick walk past our shower and fittings display on Station Road. Come in to see the full range of tiles, sanitary ware and fittings for yourself.</p>
-          </div>
-          <div class="gallery">
-            <figure class="photo-card reveal">
-              <img src="assets/img/showroom/storefront-sign-clean.jpg" alt="Shop sign reading Oreal Ceramics and Mumtaz Tile Zone &amp; Sanitary Ware above our storefront" width="855" height="481" loading="lazy">
-              <figcaption><strong>Our storefront</strong><span>Station Road, Khairpur Mirs</span></figcaption>
-            </figure>
-            <figure class="photo-card reveal reveal-d1">
-              <img src="assets/img/showroom/showroom-aisle-depth.jpg" alt="View through our glass entrance into the showroom, with tile display racks" width="855" height="481" loading="lazy">
-              <figcaption><strong>Tile displays</strong><span>Large-format and wall tiles</span></figcaption>
-            </figure>
-            <figure class="photo-card reveal">
-              <img src="assets/img/showroom/showroom-seating-taps-wall.jpg" alt="Seating area in front of a wall of taps and fittings" width="855" height="481" loading="lazy">
-              <figcaption><strong>Fittings wall</strong><span>Taps, mixers and shower sets</span></figcaption>
-            </figure>
-            <figure class="photo-card reveal reveal-d1">
-              <img src="assets/img/showroom/showroom-decor-wall-upper.jpg" alt="Decorative wall tile displays in the showroom" width="855" height="481" loading="lazy">
-              <figcaption><strong>Decor &amp; wall tiles</strong><span>See the colours in person</span></figcaption>
-            </figure>
-          </div>
-        </div>
-        <div class="outlet__video reveal">
-          <video aria-label="Showroom fittings display (video)" controls muted playsinline loop preload="none" poster="assets/video/outlet-poster.jpg"
-                 width="480" height="848" aria-describedby="outlet-video-desc">
-            <source src="assets/video/outlet-fittings.mp4" type="video/mp4">
-            Your browser can't play this video. <a href="assets/video/outlet-fittings.mp4">Download it</a> instead.
-          </video>
-          <p class="visually-hidden" id="outlet-video-desc">A 33-second walk past the shower set and fittings display in our showroom.</p>
-        </div>
-      </div>
-    </section>
-
     <!-- Why us + policy -->
     <section class="section section--mist" id="why" aria-labelledby="why-title">
       <div class="container">
@@ -844,33 +1285,34 @@
           <p>Choosing tiles is a big decision. We make it easier to get the right look, the right quality and the right amount.</p>
         </div>
 
-        <div class="features">
-          <div class="feature reveal">
+        <!-- Hairline cells: the grid reveals as one unit, so the rule colour never shows through a fading cell -->
+        <div class="features reveal">
+          <div class="feature">
             <span class="tile-icon"><svg class="icon" aria-hidden="true"><use href="#i-award"/></svg></span>
             <h3>25+ years of experience</h3>
             <p>Serving Khairpur Mirs since 2000, with service our customers trust.</p>
           </div>
-          <div class="feature reveal reveal-d1">
+          <div class="feature">
             <span class="tile-icon"><svg class="icon" aria-hidden="true"><use href="#i-globe"/></svg></span>
             <h3>Premium &amp; imported range</h3>
             <p>Quality tiles and sanitary ware, including selected products imported from China.</p>
           </div>
-          <div class="feature reveal reveal-d2">
+          <div class="feature">
             <span class="tile-icon"><svg class="icon" aria-hidden="true"><use href="#i-tag"/></svg></span>
             <h3>Honest, competitive prices</h3>
             <p>Modern designs at the best market prices, for homes and projects of every size.</p>
           </div>
-          <div class="feature reveal">
+          <div class="feature">
             <span class="tile-icon"><svg class="icon" aria-hidden="true"><use href="#i-store"/></svg></span>
             <h3>All under one roof</h3>
             <p>Tiles, sanitary ware, fittings, tile bond and grout in one showroom, from one supplier.</p>
           </div>
-          <div class="feature reveal reveal-d1">
+          <div class="feature">
             <span class="tile-icon"><svg class="icon" aria-hidden="true"><use href="#i-ruler"/></svg></span>
             <h3>Help with quantities</h3>
             <p>Tell us your room size and we'll help work out how many boxes you need, without over-buying.</p>
           </div>
-          <div class="feature reveal reveal-d2">
+          <div class="feature">
             <span class="tile-icon"><svg class="icon" aria-hidden="true"><use href="#i-swap"/></svg></span>
             <h3>10-day return or exchange</h3>
             <p>Goods can be returned or exchanged within 10 days with your bill. Opened or wet tiles can't be returned.</p>
@@ -1009,13 +1451,25 @@
               </li>
             </ul>
 
+            <!-- Map facade: no Google iframe, scripts or cookies until "Show map here" is tapped (main.js reveals that
+                 button and its note). Without JavaScript, "Open in Google Maps" still works. -->
             <div class="map">
-              <iframe
-                title="Map of Station Road near Khaki Shah Pull, Khairpur Mirs, where our showroom is"
-                src="https://maps.google.com/maps?q=Khaki%20Shah%20Pull%2C%20Station%20Road%2C%20Khairpur%20Mirs&amp;z=17&amp;output=embed"
-                loading="lazy"
-                referrerpolicy="no-referrer-when-downgrade"
-                allowfullscreen></iframe>
+              <div class="map__facade">
+                <svg class="icon" aria-hidden="true"><use href="#i-pin"/></svg>
+                <p class="map__place">Station Road, near Khaki Shah Pull, Khairpur Mirs</p>
+                <p class="map__note" hidden>The map loads when you tap, to save mobile data.</p>
+                <div class="map__actions">
+                  <a class="btn btn--light" href="https://www.google.com/maps/search/?api=1&amp;query=Khaki+Shah+Pull%2C+Station+Road%2C+Khairpur+Mirs" target="_blank" rel="noopener">Open in Google Maps</a>
+                  <button class="btn btn--ghost-light" type="button" id="map-load" hidden>Show map here</button>
+                </div>
+              </div>
+              <template id="map-template">
+                <iframe
+                  title="Map of Station Road near Khaki Shah Pull, Khairpur Mirs, where our showroom is"
+                  src="https://maps.google.com/maps?q=Khaki%20Shah%20Pull%2C%20Station%20Road%2C%20Khairpur%20Mirs&amp;z=17&amp;output=embed"
+                  referrerpolicy="no-referrer-when-downgrade"
+                  allowfullscreen></iframe>
+              </template>
             </div>
           </div>
 
@@ -1071,13 +1525,18 @@
 
     <!-- CTA band -->
     <section class="cta-band" aria-labelledby="cta-title">
+      <!-- Marble tile-face texture under a 0.8 Midnight scrim (decorative) -->
+      <picture class="cta-band__bg" aria-hidden="true">
+        <source type="image/avif" sizes="100vw" srcset="assets/img/band/cta-640.avif 640w">
+        <img src="assets/img/band/cta-640.jpg" width="640" height="427" alt="" loading="lazy" decoding="async">
+      </picture>
       <div class="container cta-band__inner">
         <div>
           <h2 id="cta-title">Planning a new floor or&nbsp;bathroom?</h2>
           <p>Send us your room size on WhatsApp and we'll suggest options to suit your style and budget.</p>
         </div>
-        <div class="cta-band__actions">
-          <a class="btn btn--light btn--lg" href="https://wa.me/923059252437" target="_blank" rel="noopener"
+        <div class="cta-band__actions" data-hide-fab>
+          <a class="btn btn--wa btn--lg" href="https://wa.me/923059252437" target="_blank" rel="noopener"
              data-wa="Assalam o Alaikum! I'm planning a new floor / bathroom and would like some suggestions.">
             <svg class="icon" aria-hidden="true"><use href="#i-wa"/></svg>WhatsApp us
           </a>
@@ -1091,6 +1550,22 @@
 
   <!-- Footer -->
   <footer class="site-footer">
+    <div class="footer-marquee" role="region" aria-label="Mumtaz Tile Zone &amp; Sanitary Ware contact banner">
+      <div class="footer-marquee__track">
+        <span>Mumtaz Tile Zone &amp; Sanitary Ware</span>
+        <span>Station Road, Opp. Soneri Bank, Near Khaki Shah Pull, Khairpur Mirs</span>
+        <a href="tel:+923059252437">0305-9252437</a>
+        <a href="https://www.facebook.com/share/1DME8Le11h/" target="_blank" rel="noopener" aria-label="Facebook"><svg class="icon" aria-hidden="true"><use href="#i-fb"/></svg></a>
+        <a href="https://www.instagram.com/mumtaztilezone/" target="_blank" rel="noopener" aria-label="Instagram"><svg class="icon" aria-hidden="true"><use href="#i-ig"/></svg></a>
+        <a href="https://www.tiktok.com/@mumtaztilezones" target="_blank" rel="noopener" aria-label="TikTok"><svg class="icon" aria-hidden="true"><use href="#i-tt"/></svg></a>
+        <span aria-hidden="true">Mumtaz Tile Zone &amp; Sanitary Ware</span>
+        <span aria-hidden="true">Station Road, Opp. Soneri Bank, Near Khaki Shah Pull, Khairpur Mirs</span>
+        <a aria-hidden="true" tabindex="-1" href="tel:+923059252437">0305-9252437</a>
+        <a aria-hidden="true" tabindex="-1" href="https://www.facebook.com/share/1DME8Le11h/" target="_blank" rel="noopener" aria-label="Facebook"><svg class="icon" aria-hidden="true"><use href="#i-fb"/></svg></a>
+        <a aria-hidden="true" tabindex="-1" href="https://www.instagram.com/mumtaztilezone/" target="_blank" rel="noopener" aria-label="Instagram"><svg class="icon" aria-hidden="true"><use href="#i-ig"/></svg></a>
+        <a aria-hidden="true" tabindex="-1" href="https://www.tiktok.com/@mumtaztilezones" target="_blank" rel="noopener" aria-label="TikTok"><svg class="icon" aria-hidden="true"><use href="#i-tt"/></svg></a>
+      </div>
+    </div>
     <div class="container">
       <div class="site-footer__grid">
         <div class="site-footer__brand">
@@ -1100,12 +1575,12 @@
         <nav aria-labelledby="footer-explore">
           <h2 id="footer-explore">Explore</h2>
           <ul>
-            <li><a href="#products">Products</a></li>
             <li><a href="#collections">Tile styles</a></li>
+            <li><a href="#products">Products</a></li>
             <li><a href="#sanitary">Sanitary ware</a></li>
+            <li><a href="#outlet">Inside our outlet</a></li>
             <li><a href="#tile-bond">Tile bond &amp; grout</a></li>
             <li><a href="#calculator">Tile calculator</a></li>
-            <li><a href="#outlet">Inside our outlet</a></li>
             <li><a href="#policy">Store policy</a></li>
             <li><a href="#about">About us</a></li>
           </ul>
@@ -1137,6 +1612,15 @@
        data-wa="Assalam o Alaikum! I'd like to ask about your tiles and sanitary ware.">
       <svg class="icon" aria-hidden="true"><use href="#i-wa"/></svg>
     </a>
+
+    <!-- Mobile action bar (≤960px; replaces the floating button there). It shares the floating button's
+         data-hide-fab observer, and hides while the menu is open or a text field has focus. -->
+    <nav class="action-bar" aria-label="Quick contact">
+      <a class="action-bar__wa" href="https://wa.me/923059252437" target="_blank" rel="noopener"
+         data-wa="Assalam o Alaikum! I'd like to ask about your tiles and sanitary ware."><svg class="icon" aria-hidden="true"><use href="#i-wa"/></svg>WhatsApp</a>
+      <a href="tel:+923059252437"><svg class="icon" aria-hidden="true"><use href="#i-phone"/></svg>Call<span class="visually-hidden"> 0305-9252437</span></a>
+      <a href="https://www.google.com/maps/search/?api=1&amp;query=Khaki+Shah+Pull%2C+Station+Road%2C+Khairpur+Mirs" target="_blank" rel="noopener"><svg class="icon" aria-hidden="true"><use href="#i-pin"/></svg>Directions</a>
+    </nav>
   </footer>
 </body>
 </html>
